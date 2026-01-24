@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "PAM Wellness · DREAM Discovery & Reimagine Output",
   description:
     "Structured synthesis of the PAM Wellness DREAM session including discovery insights, reimagined care journeys, operating model design, and CareCore platform vision.",
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -27,13 +31,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/ethenta_dots_transparent.png" sizes="any" />
+        <link rel="icon" href="/ethenta_dots_transparent.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/ethenta_dots_transparent.png" />
+      </head>
       <body className={`${displayFont.variable} ${bodyFont.variable} antialiased`}>
         <AuthGate>
           <header className="sticky top-0 z-20 border-b border-black/10 bg-white/70 backdrop-blur-lg">
             <div className="flex w-full items-center justify-between px-6 py-4">
               <a href="/" className="flex items-center gap-4">
                 <img
-                  src="/pam-wellness-logo.png"
+                  src="/ethenta_dots_transparent.png"
                   alt="PAM Wellness"
                   className="h-10 w-auto"
                 />
