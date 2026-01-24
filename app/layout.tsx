@@ -42,7 +42,7 @@ export default function RootLayout({
             <div className="flex w-full items-center justify-between px-6 py-4">
               <a href="/" className="flex items-center gap-4">
                 <img
-                  src="/ethenta_dots_transparent.png"
+                  src="/pam-wellness-logo.png"
                   alt="PAM Wellness"
                   className="h-10 w-auto"
                 />
