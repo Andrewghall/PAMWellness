@@ -15,9 +15,9 @@ const bodyFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "CARECORE · AI-Enabled Wellness System Demo",
+  title: "PAM Wellness · DREAM Discovery & Reimagine Output",
   description:
-    "A strategic demonstration app showing Discovery insights, OHIO blockers, AI-enabled capabilities, and regulatory guardrails for PAM Wellness.",
+    "Structured synthesis of the PAM Wellness DREAM session including discovery insights, reimagined care journeys, operating model design, and CareCore platform vision.",
 };
 
 export default function RootLayout({
