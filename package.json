@@ -1,0 +1,1 @@
+{"name": "pamwellness", "version": "1.0.0", "description": "PAMWellness CARECORE Platform", "scripts": {"build": "echo \"No build needed - static files\""}}
