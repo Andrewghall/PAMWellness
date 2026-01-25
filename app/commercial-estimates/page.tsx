@@ -681,7 +681,7 @@ export default function CommercialEstimatesPage() {
           <h2 className="text-display text-xl mb-4">Success Measures</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              "MVP live within 12 weeks",
+              "MVP live within 29 weeks",
               "Actor journeys fully supported",
               "Portal adopted as primary entry point",
               "Foundation in place for Horizons 2 and 3"
