@@ -391,16 +391,22 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
-        {/* Client Expectations */}
+        {/* What the Client Should Expect */}
         <section className="card p-6">
           <h2 className="text-display text-xl mb-4">What the Client Should Expect</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            As the client, you should expect:
+          </p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              "Weekly delivery cadence",
-              "Fortnightly demos",
-              "Transparent roadmap tracking",
-              "Early visibility of working software",
-              "Incremental value delivery"
+              "Weekly delivery updates and progress reports",
+              "Fortnightly demo sessions showing working software",
+              "Transparent roadmap tracking with clear milestones",
+              "Early visibility of working features and functionality",
+              "Incremental value delivery throughout the project",
+              "Clear communication on risks and dependencies",
+              "Regular stakeholder alignment sessions",
+              "Documentation and handover materials"
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-[color:var(--ink-muted)]">
                 <span className="text-[color:var(--accent)]">•</span>
