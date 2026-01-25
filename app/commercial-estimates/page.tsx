@@ -185,9 +185,23 @@ export default function CommercialEstimatesPage() {
             ))}
           </div>
           <div className="mt-4 rounded-xl bg-emerald-50 p-4 border border-emerald-200">
-            <p className="text-sm text-emerald-800">
+            <p className="text-sm text-emerald-800 mb-3">
               These deliverables together form the operational, technical, and commercial blueprint for build.
             </p>
+            <div className="mt-3 p-3 bg-white rounded-lg border border-emerald-300">
+              <h4 className="text-sm font-semibold text-emerald-900 mb-2">What is the Horizon Roadmap?</h4>
+              <p className="text-sm text-emerald-800">
+                The Horizon roadmap defines three phased delivery stages:
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-emerald-800 ml-4">
+                <li><strong>Horizon 1 (H1):</strong> MVP Foundation - core platform and essential workflows</li>
+                <li><strong>Horizon 2 (H2):</strong> Expansion - advanced features and deeper integrations</li>
+                <li><strong>Horizon 3 (H3):</strong> Optimisation & Scale - intelligence, automation, and commercialisation</li>
+              </ul>
+              <p className="text-sm text-emerald-800 mt-2">
+                Each horizon builds upon the previous one, creating a clear path from MVP to full platform capability.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -262,6 +276,9 @@ export default function CommercialEstimatesPage() {
         {/* Delivery Horizons */}
         <section className="card p-6">
           <h2 className="text-display text-2xl mb-4">Delivery Horizons</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            The Horizon roadmap provides a structured approach to platform evolution, ensuring each phase builds solid foundations for the next. This phased delivery manages risk while delivering incremental value.
+          </p>
           
           {/* Horizon 1 */}
           <div className="mb-6">
