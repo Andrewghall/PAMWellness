@@ -273,7 +273,7 @@ export default function ReimagineOutputPage() {
                 Click to refine in Journey Mapper →
               </span>
             </div>
-            <div className="mt-4 grid grid-cols-9 gap-2">
+            <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
               {journeyStages.map((stage, i) => (
                 <div key={stage.id} className="flex flex-col">
                   <div className="flex items-center gap-1">
@@ -283,11 +283,15 @@ export default function ReimagineOutputPage() {
                       {i + 1}
                     </span>
                     {i < journeyStages.length - 1 && (
-                      <div className="h-0.5 flex-1 bg-[color:var(--accent)]/30" />
+                      <div className="h-0.5 flex-1 bg-[color:var(--accent)]/30 hidden lg:block" />
                     )}
                   </div>
-                  <p className="mt-2 text-xs font-semibold text-black leading-tight">{stage.title}</p>
-                  <p className="mt-1 text-[10px] leading-tight text-black/50">{stage.summary}</p>
+                  <p className="mt-2 text-xs font-semibold text-black leading-tight hidden lg:block">{stage.title}</p>
+                  <p className="mt-1 text-[10px] leading-tight text-black/50 hidden lg:block">{stage.summary}</p>
+                  {/* Mobile display */}
+                  <div className="lg:hidden">
+                    <p className="mt-2 text-xs font-semibold text-black leading-tight">{i + 1}. {stage.title.length > 15 ? stage.title.substring(0, 15) + "..." : stage.title}</p>
+                  </div>
                 </div>
               ))}
             </div>

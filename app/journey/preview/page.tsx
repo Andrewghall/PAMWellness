@@ -203,7 +203,7 @@ export default function JourneyPreviewPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/50">
             A. Patient Experience Journey
           </p>
-          <div className="mt-4 grid grid-cols-9 gap-2">
+          <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
             {stages.map((stage) => (
               <Link
                 key={stage.id}
@@ -213,8 +213,12 @@ export default function JourneyPreviewPage() {
                 <span
                   className={`absolute right-2 top-2 h-2.5 w-2.5 rounded-full ${emotionColors[stage.emotionalState]}`}
                 />
-                <p className="pr-4 text-xs font-semibold text-black">{stage.patient.stageTitle}</p>
-                <p className="mt-2 text-[10px] leading-tight text-black/60">{stage.patient.mindset}</p>
+                <p className="pr-4 text-xs font-semibold text-black hidden lg:block">{stage.patient.stageTitle}</p>
+                <p className="mt-2 text-[10px] leading-tight text-black/60 hidden lg:block">{stage.patient.mindset}</p>
+                {/* Mobile display */}
+                <div className="lg:hidden">
+                  <p className="text-xs font-semibold text-black">{stage.patient.stageTitle.length > 12 ? stage.patient.stageTitle.substring(0, 12) + "..." : stage.patient.stageTitle}</p>
+                </div>
               </Link>
             ))}
           </div>
@@ -225,14 +229,15 @@ export default function JourneyPreviewPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-600">
             Patient Buddy – AI Assistant for Patients
           </p>
-          <div className="mt-4 grid grid-cols-9 gap-2">
+          <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
             {stages.map((stage) => (
               <div
                 key={stage.id}
                 className="rounded-xl border border-purple-200 bg-white p-3"
               >
-                <p className="text-xs font-semibold text-purple-700">🤖 Patient Buddy</p>
-                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60">
+                <p className="text-xs font-semibold text-purple-700 hidden lg:block">🤖 Patient Buddy</p>
+                <p className="text-xs font-semibold text-purple-700 lg:hidden">🤖</p>
+                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60 hidden lg:block">
                   {patientBuddyActions[stage.id]?.slice(0, 2).map((action) => (
                     <li key={action}>• {action}</li>
                   ))}
@@ -247,14 +252,15 @@ export default function JourneyPreviewPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/50">
             B. PAM Experience – Blending Agentic AI and Human Care
           </p>
-          <div className="mt-4 grid grid-cols-9 gap-2">
+          <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
             {stages.map((stage) => (
               <div
                 key={stage.id}
                 className="rounded-xl border border-[color:var(--accent)]/20 bg-[color:var(--accent)]/5 p-3"
               >
-                <p className="text-xs font-semibold text-[color:var(--accent)]">{stage.pam.stageTitle}</p>
-                <p className="mt-2 text-[10px] leading-tight text-black/60">{stage.pam.objective}</p>
+                <p className="text-xs font-semibold text-[color:var(--accent)] hidden lg:block">{stage.pam.stageTitle}</p>
+                <p className="text-xs font-semibold text-[color:var(--accent)] lg:hidden">{stage.pam.stageTitle.length > 10 ? stage.pam.stageTitle.substring(0, 10) + "..." : stage.pam.stageTitle}</p>
+                <p className="mt-2 text-[10px] leading-tight text-black/60 hidden lg:block">{stage.pam.objective}</p>
               </div>
             ))}
           </div>
@@ -265,14 +271,15 @@ export default function JourneyPreviewPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
             Clinician Buddy – AI Assistant for Clinicians
           </p>
-          <div className="mt-4 grid grid-cols-9 gap-2">
+          <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
             {stages.map((stage) => (
               <div
                 key={stage.id}
                 className="rounded-xl border border-teal-200 bg-white p-3"
               >
-                <p className="text-xs font-semibold text-teal-700">🩺 Clinician Buddy</p>
-                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60">
+                <p className="text-xs font-semibold text-teal-700 hidden lg:block">🩺 Clinician Buddy</p>
+                <p className="text-xs font-semibold text-teal-700 lg:hidden">🩺</p>
+                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60 hidden lg:block">
                   {clinicianBuddyActions[stage.id]?.slice(0, 2).map((action) => (
                     <li key={action}>• {action}</li>
                   ))}
@@ -287,12 +294,13 @@ export default function JourneyPreviewPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/50">
             C. What Agentic AI Does at Each Stage
           </p>
-          <div className="mt-4 grid grid-cols-9 gap-2">
+          <div className="mt-4 grid grid-cols-9 gap-2 lg:gap-4">
             {stages.map((stage) => (
               <div key={stage.id} className="rounded-xl border border-black/10 bg-slate-50 p-3">
                 <div className="flex items-center justify-between text-[10px] text-black/60">
-                  <span>AI {stage.aiInvolvement.aiPercent}%</span>
-                  <span>Human {stage.aiInvolvement.humanPercent}%</span>
+                  <span className="hidden lg:block">AI {stage.aiInvolvement.aiPercent}%</span>
+                  <span className="hidden lg:block">Human {stage.aiInvolvement.humanPercent}%</span>
+                  <span className="lg:hidden">{stage.aiInvolvement.aiPercent}%</span>
                 </div>
                 <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-black/10">
                   <div
@@ -300,12 +308,12 @@ export default function JourneyPreviewPage() {
                     style={{ width: `${stage.aiInvolvement.aiPercent}%` }}
                   />
                 </div>
-                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60">
+                <ul className="mt-2 space-y-1 text-[9px] leading-tight text-black/60 hidden lg:block">
                   {stage.aiBehaviours.slice(0, 2).map((b) => (
                     <li key={b}>• {b}</li>
                   ))}
                 </ul>
-                <p className="mt-2 border-t border-black/10 pt-2 text-[9px] italic text-black/50">
+                <p className="mt-2 border-t border-black/10 pt-2 text-[9px] italic text-black/50 hidden lg:block">
                   {stage.governanceLine}
                 </p>
               </div>

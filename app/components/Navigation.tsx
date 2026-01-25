@@ -3,6 +3,7 @@
 import { useAdmin } from "./AdminContext";
 import AnalyticsTracker from "./AnalyticsTracker";
 import MobileHeader from "./MobileHeader";
+import SmoothScroll from "./SmoothScroll";
 
 export default function Navigation({ children }: { children: React.ReactNode }) {
   const { isAdmin } = useAdmin();
@@ -22,6 +23,7 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
   return (
     <>
       <AnalyticsTracker page={typeof window !== 'undefined' ? window.location.pathname : '/'} />
+      <SmoothScroll />
       <header className="sticky top-0 z-20 border-b border-black/10 bg-white/70 backdrop-blur-lg">
         <div className="flex w-full items-center justify-between px-6 py-4">
           <a href="/" className="flex items-center gap-4 flex-shrink-0">
