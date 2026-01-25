@@ -43,18 +43,18 @@ export default function Home() {
   ];
 
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10">
-        <section className="glass rounded-[32px] p-8 md:p-12">
+    <main className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-6 md:px-6 md:py-10 lg:gap-10 lg:px-6 lg:py-10">
+        <section className="glass rounded-[32px] p-6 md:p-8 lg:p-12">
           <p className="pill badge-accent">Executive Vision Report</p>
-          <h1 className="text-display mt-4 text-4xl font-semibold leading-tight md:text-5xl">
+          <h1 className="text-display mt-4 text-2xl font-semibold leading-tight md:text-4xl lg:text-5xl">
             Workshop synthesis and direction
           </h1>
-          <p className="mt-4 text-lg text-[color:var(--ink-muted)]">
+          <p className="mt-4 text-base text-[color:var(--ink-muted)] md:text-lg">
             The organisation is operating in a market evolving faster than traditional models can
             support. The challenge is not a lack of capability, but the need to realign structure,
             technology, and narrative to match the modern market.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm">
+          <div className="mt-6 flex flex-wrap gap-2 text-sm md:gap-3">
             <a 
               href="/summary#strategic-inflection-point" 
               className="pill hover:bg-black/10 transition-colors cursor-pointer"
@@ -76,15 +76,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <section className="grid gap-3 md:gap-4 lg:grid-cols-2 lg:gap-4 xl:grid-cols-4">
           {sections.map((section) => (
             <a
               key={section.href}
               href={section.href}
-              className="card flex flex-col p-6 transition hover:border-black/30"
+              className="card flex flex-col p-4 transition hover:border-black/30 md:p-6"
             >
-              <h2 className="text-display text-lg">{section.title}</h2>
-              <p className="mt-3 flex-1 text-sm text-[color:var(--ink-muted)]">
+              <h2 className="text-display text-base md:text-lg">{section.title}</h2>
+              <p className="mt-3 flex-1 text-sm text-[color:var(--ink-muted)] md:text-sm">
                 {section.description}
               </p>
               <span className="mt-4 text-sm font-semibold text-[color:var(--accent)]">
