@@ -653,15 +653,15 @@ export default function CommercialEstimatesPage() {
         <section className="card p-6">
           <h2 className="text-display text-xl mb-4">Client Responsibilities</h2>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            To ensure delivery velocity, the client will need to provide:
+            As the client, you will need to provide:
           </p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              "Named product owner",
-              "Access to subject matter experts",
-              "System documentation and credentials",
-              "Timely feedback on designs",
-              "Decision-making availability"
+              "A named product owner to guide decisions",
+              "Access to subject matter experts for domain knowledge",
+              "System documentation and technical credentials",
+              "Timely feedback on designs and deliverables",
+              "Availability for decision-making and approvals"
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-[color:var(--ink-muted)]">
                 <span className="text-[color:var(--accent)]">•</span>
