@@ -19,10 +19,33 @@ export default function AnalyticsTracker({ page }: { page: string }) {
 
     // Track clicks
     const handleClick = (e: MouseEvent) => {
-      const element = (e.target as HTMLElement).tagName.toLowerCase();
-      const className = (e.target as HTMLElement).className;
-      const id = (e.target as HTMLElement).id;
-      const description = id ? `#${id}` : className ? `.${className.split(' ')[0]}` : element;
+      const target = e.target as HTMLElement;
+      const element = target.tagName.toLowerCase();
+      const className = target.className;
+      const id = target.id;
+      const text = target.innerText?.trim().substring(0, 50);
+      const href = (target as HTMLAnchorElement).href;
+      const alt = target.getAttribute('alt');
+      
+      // Create human-readable description
+      let description = "";
+      
+      if (text && text.length > 0) {
+        description = `"${text}"`;
+      } else if (alt && alt.length > 0) {
+        description = `Image: ${alt}`;
+      } else if (href) {
+        const linkText = new URL(href).pathname;
+        description = `Link to ${linkText}`;
+      } else if (id) {
+        description = `#${id}`;
+      } else if (className) {
+        const firstClass = className.split(' ')[0];
+        description = `${element}.${firstClass}`;
+      } else {
+        description = element;
+      }
+      
       trackClick(description, page);
     };
 

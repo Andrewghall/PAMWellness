@@ -154,13 +154,17 @@ export default function AdminDashboard() {
           {/* Pages Tab */}
           {activeTab === "pages" && (
             <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900">Page Performance Analytics</h3>
+                <p className="text-sm text-gray-600 mt-1">See which pages are most popular and how long users stay</p>
+              </div>
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Page</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unique Users</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg Time</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Views</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unique Visitors</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg Time Spent</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -170,10 +174,17 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{stats.views}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{stats.users.size}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {stats.views > 0 ? Math.round(stats.totalTime / stats.views / 1000) : 0}s
+                        {stats.views > 0 ? Math.round(stats.totalTime / stats.views / 1000) : 0} seconds
                       </td>
                     </tr>
                   ))}
+                  {Object.keys(pageStats).length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                        No page data available yet
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -182,12 +193,16 @@ export default function AdminDashboard() {
           {/* Users Tab */}
           {activeTab === "users" && (
             <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-200">
+                <h3 className="text-lg font-medium text-gray-900">Individual User Activity</h3>
+                <p className="text-sm text-gray-600 mt-1">Track how each user navigates through your site</p>
+              </div>
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User ID</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pages Viewed</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Time</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pages Visited</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Time on Site</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Visit</th>
                   </tr>
                 </thead>
@@ -196,12 +211,19 @@ export default function AdminDashboard() {
                     <tr key={userId}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{userId}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{stats.pages.size}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Math.round(stats.totalTime / 1000)}s</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Math.round(stats.totalTime / 1000)} seconds</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {new Date(stats.firstVisit).toLocaleString()}
                       </td>
                     </tr>
                   ))}
+                  {Object.keys(userStats).length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-6 py-8 text-center text-gray-500">
+                        No user activity recorded yet
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -211,20 +233,25 @@ export default function AdminDashboard() {
           {activeTab === "interactions" && (
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Click Events</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">Recent User Interactions</h3>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {clickEvents.slice(-10).reverse().map((click, index) => (
-                    <div key={index} className="flex justify-between text-sm">
-                      <span className="text-gray-600">{click.element}</span>
-                      <span className="text-gray-500">{click.page}</span>
-                      <span className="text-gray-400">{new Date(click.timestamp).toLocaleTimeString()}</span>
+                    <div key={index} className="flex justify-between items-center text-sm p-2 bg-gray-50 rounded">
+                      <div className="flex-1">
+                        <span className="font-medium text-gray-900">{click.element}</span>
+                        <span className="text-gray-500 ml-2">on {click.page}</span>
+                      </div>
+                      <span className="text-gray-400 text-xs">{new Date(click.timestamp).toLocaleTimeString()}</span>
                     </div>
                   ))}
+                  {clickEvents.length === 0 && (
+                    <p className="text-gray-500 text-center py-4">No user interactions recorded yet</p>
+                  )}
                 </div>
               </div>
               
               <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Scroll Depth by Page</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">Content Engagement by Page</h3>
                 <div className="space-y-4">
                   {Object.entries(
                     scrollEvents.reduce((acc, scroll) => {
@@ -237,9 +264,9 @@ export default function AdminDashboard() {
                   ).map(([page, depths]) => (
                     <div key={page}>
                       <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-600">{page}</span>
+                        <span className="text-gray-600 font-medium">{page}</span>
                         <span className="text-gray-500">
-                          {Math.round(depths.reduce((a, b) => a + b, 0) / depths.length)}% avg
+                          {Math.round(depths.reduce((a, b) => a + b, 0) / depths.length)}% average scroll depth
                         </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
@@ -250,6 +277,9 @@ export default function AdminDashboard() {
                       </div>
                     </div>
                   ))}
+                  {Object.keys(scrollEvents).length === 0 && (
+                    <p className="text-gray-500 text-center py-4">No scroll data recorded yet</p>
+                  )}
                 </div>
               </div>
             </div>
