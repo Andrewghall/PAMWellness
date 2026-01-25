@@ -273,76 +273,126 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
-        {/* Delivery Horizons */}
+        {/* Delivery Clarity by Horizon */}
         <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Delivery Horizons (For example)</h2>
-          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            The Horizon roadmap delivers specific platform specifications and features at each phase, with functional depth built out progressively within each horizon.
-          </p>
+          <h2 className="text-display text-2xl mb-4">Delivery Clarity by Horizon (For example)</h2>
           
           {/* Horizon 1 */}
-          <div className="mb-6">
-            <h3 className="text-display text-lg mb-3 text-emerald-700">Horizon 1 — Core Platform Specifications</h3>
-            <p className="text-sm text-emerald-600 mb-3 font-medium">Delivers foundational platform features and core EAP workflows.</p>
-            <div className="rounded-xl bg-emerald-50 p-4 border border-emerald-200">
-              <h4 className="text-sm font-semibold text-emerald-900 mb-2">Key Specifications Delivered</h4>
-              <ul className="space-y-1 text-sm text-emerald-800">
-                <li>• Secure portal infrastructure and authentication system</li>
-                <li>• Role-based access control (corporate, clinician, admin)</li>
-                <li>• Patient Buddy journey workflow engine</li>
-                <li>• Clinician Buddy journey workflow engine</li>
-                <li>• Basic case management and tracking</li>
-                <li>• Integration framework for RingCentral and core systems</li>
-                <li>• Foundation analytics and reporting dashboard</li>
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-emerald-700">Horizon 1 — MVP (Business Outcomes)</h3>
+            <p className="text-sm text-emerald-600 mb-4 font-medium">Horizon 1 represents the complete operational application from a client business perspective.</p>
+            
+            <div className="rounded-xl bg-emerald-50 p-4 border border-emerald-200 mb-4">
+              <h4 className="text-sm font-semibold text-emerald-900 mb-3">Core Business Outcomes</h4>
+              <ul className="space-y-2 text-sm text-emerald-800">
+                <li>• A single digital portal acting as the operational front door for the organisation</li>
+                <li>• Clearly defined journeys for Patients, Clinicians, Corporate users, and Operational and leadership teams</li>
+                <li>• A consistent experience across digital and assisted channels</li>
               </ul>
-              <h4 className="text-sm font-semibold text-emerald-900 mb-2 mt-3">Functional Depth</h4>
-              <p className="text-sm text-emerald-800">
-                Core workflows operational with essential functionality - sufficient for daily EAP operations and immediate value delivery.
-              </p>
+            </div>
+
+            <div className="rounded-xl bg-blue-50 p-4 border border-blue-200 mb-4">
+              <h4 className="text-sm font-semibold text-blue-900 mb-3">Patient Experience Outcomes</h4>
+              <p className="text-sm text-blue-800 mb-2">A defined Patient Buddy journey that:</p>
+              <ul className="space-y-1 text-sm text-blue-800 ml-4">
+                <li>• Guides patients proactively and reactively</li>
+                <li>• Supports appointment management, updates, and communications</li>
+                <li>• Identifies risk or exception scenarios</li>
+                <li>• Escalates to human teams when required</li>
+              </ul>
+              <p className="text-sm text-blue-800 mt-3 font-medium">Result: Improved patient confidence, responsiveness, and satisfaction</p>
+            </div>
+
+            <div className="rounded-xl bg-purple-50 p-4 border border-purple-200 mb-4">
+              <h4 className="text-sm font-semibold text-purple-900 mb-3">Clinician Experience Outcomes</h4>
+              <p className="text-sm text-purple-800 mb-2">A defined Clinician Buddy journey that:</p>
+              <ul className="space-y-1 text-sm text-purple-800 ml-4">
+                <li>• Reduces administrative burden</li>
+                <li>• Supports task prioritisation and workflow management</li>
+                <li>• Assists with documentation and follow-up</li>
+                <li>• Enables safe escalation and oversight</li>
+              </ul>
+              <p className="text-sm text-purple-800 mt-3 font-medium">Result: Improved clinician efficiency and reduced cognitive load</p>
+            </div>
+
+            <div className="rounded-xl bg-amber-50 p-4 border border-amber-200 mb-4">
+              <h4 className="text-sm font-semibold text-amber-900 mb-3">Operational Outcomes</h4>
+              <ul className="space-y-1 text-sm text-amber-800">
+                <li>• Standardised end-to-end processes across patient and clinician journeys</li>
+                <li>• Clear ownership of each stage of the journey</li>
+                <li>• Defined escalation paths and accountability</li>
+                <li>• Reduced manual coordination between teams</li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl bg-indigo-50 p-4 border border-indigo-200 mb-4">
+              <h4 className="text-sm font-semibold text-indigo-900 mb-3">Performance & Governance Outcomes</h4>
+              <p className="text-sm text-indigo-800 mb-2">A defined KPI framework covering:</p>
+              <ul className="space-y-1 text-sm text-indigo-800 ml-4">
+                <li>• Patient experience</li>
+                <li>• Clinical safety</li>
+                <li>• Operational efficiency</li>
+                <li>• Throughput and responsiveness</li>
+              </ul>
+              <ul className="space-y-1 text-sm text-indigo-800 mt-2">
+                <li>• Executive dashboards providing real-time visibility</li>
+                <li>• Agreed decision cadence supported by measurable data</li>
+              </ul>
+            </div>
+
+            <div className="rounded-xl bg-rose-50 p-4 border border-rose-200 mb-4">
+              <h4 className="text-sm font-semibold text-rose-900 mb-3">Operating Model Outcomes</h4>
+              <ul className="space-y-1 text-sm text-rose-800">
+                <li>• Updated SOPs aligned to the new digital model</li>
+                <li>• Clear roles, responsibilities, and handoffs</li>
+                <li>• Consistent governance across clinical and non-clinical activity</li>
+              </ul>
+            </div>
+
+            <div className="mt-6 p-4 bg-emerald-100 rounded-xl border border-emerald-300">
+              <h4 className="text-sm font-semibold text-emerald-900 mb-2">At the end of Horizon 1, the client will have:</h4>
+              <ul className="space-y-1 text-sm text-emerald-800">
+                <li>• A fully operational digital care platform</li>
+                <li>• Measurable performance visibility</li>
+                <li>• Improved patient and clinician experience</li>
+                <li>• Reduced operational friction</li>
+                <li>• A scalable foundation for future expansion</li>
+              </ul>
             </div>
           </div>
 
           {/* Horizon 2 */}
-          <div className="mb-6">
-            <h3 className="text-display text-lg mb-3 text-blue-700">Horizon 2 — Advanced Feature Specifications</h3>
-            <p className="text-sm text-blue-600 mb-3 font-medium">Expands platform capabilities with advanced EAP features and deeper integrations.</p>
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-blue-700">Horizon 2 — Expansion (Additional Build)</h3>
+            <p className="text-sm text-blue-600 mb-3 font-medium">Build cost: £50,000</p>
+            <p className="text-sm text-blue-800 mb-4">Horizon 2 is an extension of the live MVP and is not required for initial delivery.</p>
+            
             <div className="rounded-xl bg-blue-50 p-4 border border-blue-200">
-              <h4 className="text-sm font-semibold text-blue-900 mb-2">Key Specifications Delivered</h4>
+              <p className="text-sm text-blue-800 mb-3">Scope may include:</p>
               <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Advanced journey analytics and insights</li>
-                <li>• AI-supported decision guidance tools</li>
-                <li>• Enhanced automation and orchestration engine</li>
-                <li>• Multi-channel communication management</li>
-                <li>• Advanced reporting and business intelligence</li>
-                <li>• Extended integration capabilities (HR systems, benefits platforms)</li>
-                <li>• Advanced user experience and personalization</li>
+                <li>• Additional automations</li>
+                <li>• Extended analytics</li>
+                <li>• Further system integrations</li>
+                <li>• Journey optimisation</li>
               </ul>
-              <h4 className="text-sm font-semibold text-blue-900 mb-2 mt-3">Functional Depth</h4>
-              <p className="text-sm text-blue-800">
-                Sophisticated workflow automation and intelligence layers - enabling proactive EAP service delivery and operational efficiency.
-              </p>
+              <p className="text-sm text-blue-800 mt-3 font-medium">Deliverables are defined only once Horizon 1 is operational.</p>
             </div>
           </div>
 
           {/* Horizon 3 */}
-          <div>
-            <h3 className="text-display text-lg mb-3 text-purple-700">Horizon 3 — Enterprise Platform Specifications</h3>
-            <p className="text-sm text-purple-600 mb-3 font-medium">Delivers enterprise-grade platform capabilities and advanced operational excellence.</p>
+          <div className="mb-6">
+            <h3 className="text-display text-lg mb-3 text-purple-700">Horizon 3 — Additional Scope</h3>
+            <p className="text-sm text-purple-800 mb-4">Horizon 3 represents additional capability only, based on future requirements.</p>
+            
             <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
-              <h4 className="text-sm font-semibold text-purple-900 mb-2">Key Specifications Delivered</h4>
+              <p className="text-sm text-purple-800 mb-3">Examples include:</p>
               <ul className="space-y-1 text-sm text-purple-800">
-                <li>• Multi-entity and multi-tenant architecture</li>
-                <li>• Predictive analytics and early warning systems</li>
-                <li>• Advanced orchestration and workflow intelligence</li>
-                <li>• Enterprise-grade security and compliance features</li>
-                <li>• Advanced API ecosystem and partner integrations</li>
-                <li>• Comprehensive business intelligence and strategic insights</li>
-                <li>• Platform configuration and customization tools</li>
+                <li>• Advanced AI capabilities</li>
+                <li>• New product modules</li>
+                <li>• Predictive analytics</li>
+                <li>• Commercial extensions</li>
               </ul>
-              <h4 className="text-sm font-semibold text-purple-900 mb-2 mt-3">Functional Depth</h4>
-              <p className="text-sm text-purple-800">
-                Full enterprise platform capabilities - supporting complex EAP service models, advanced analytics, and scalable operations.
-              </p>
+              <p className="text-sm text-purple-800 mt-3 font-medium">Scope and pricing are defined separately once Horizon 2 priorities are known.</p>
             </div>
           </div>
         </section>
@@ -382,34 +432,40 @@ export default function CommercialEstimatesPage() {
 
         {/* Commercial Estimate */}
         <section className="card p-6">
-          <h2 className="text-display text-xl mb-4">Commercial Estimate (MVP)</h2>
+          <h2 className="text-display text-xl mb-4">Commercial Estimate</h2>
+          <div className="rounded-xl bg-amber-50 p-4 border border-amber-200 mb-4">
+            <p className="text-sm text-amber-800">
+              <strong>Important:</strong> These are rough order of magnitude estimates and subject to further due diligence to ensure we get the accurate baseline around Horizon deliverables.
+            </p>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-black/10">
                   <th className="text-left p-3 font-semibold">Component</th>
-                  <th className="text-right p-3 font-semibold">Estimate</th>
+                  <th className="text-right p-3 font-semibold">Investment</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { component: "Workshops & Architecture", estimate: "£12,000" },
-                  { component: "Portal UX / UI Design", estimate: "£15,000" },
-                  { component: "Core Application Build", estimate: "£55,000" },
-                  { component: "Integrations & Data Models", estimate: "£20,000" },
-                  { component: "Testing, Hardening & Launch", estimate: "£8,000" }
+                  { component: "Discovery workshops", investment: "£12,000" },
+                  { component: "Proof of Value (required)", investment: "£20,000" },
+                  { component: "MVP build (depending on POV progression)", investment: "£130,000–£150,000" },
+                  { component: "Annual operate and support", investment: "£100,000" },
+                  { component: "Horizon 2 expansion", investment: "£50,000" }
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-black/5">
                     <td className="p-3">{row.component}</td>
-                    <td className="p-3 text-right font-medium">{row.estimate}</td>
+                    <td className="p-3 text-right font-medium">{row.investment}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="mt-6 text-center">
-            <p className="text-2xl font-bold text-[color:var(--accent)]">Estimated MVP Investment: £110,000</p>
-            <p className="text-sm text-[color:var(--ink-muted)] mt-2">Final pricing confirmed once MVP scope is signed off.</p>
+          <div className="mt-6 rounded-xl bg-[color:var(--accent)]/5 p-4 border-l-4 border-[color:var(--accent)]">
+            <p className="text-sm text-[color:var(--ink-muted)] font-medium">
+              Horizon 3 — Additional scope as required, priced separately once Horizon 2 priorities are known.
+            </p>
           </div>
         </section>
 
