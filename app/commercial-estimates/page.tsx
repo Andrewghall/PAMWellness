@@ -414,8 +414,8 @@ export default function CommercialEstimatesPage() {
                 {[
                   { phase: "Discovery & Workshops", duration: "2 weeks", output: "Final scope & architecture" },
                   { phase: "UX / Portal Design", duration: "2 weeks", output: "Clickable designs" },
-                  { phase: "Core Build", duration: "6–8 weeks", output: "Functional MVP" },
-                  { phase: "Testing & Refinement", duration: "2 weeks", output: "Production-ready" }
+                  { phase: "Core Build", duration: "15 weeks", output: "Functional MVP" },
+                  { phase: "Testing and implementation", duration: "10 weeks", output: "Production-ready" }
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-black/5">
                     <td className="p-3 font-medium">{row.phase}</td>
@@ -427,7 +427,7 @@ export default function CommercialEstimatesPage() {
             </table>
           </div>
           <div className="mt-4 text-center">
-            <p className="text-lg font-semibold text-[color:var(--accent)]">Total: ~12 weeks</p>
+            <p className="text-lg font-semibold text-[color:var(--accent)]">Total: ~29 weeks</p>
           </div>
         </section>
 
