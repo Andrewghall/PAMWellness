@@ -47,13 +47,20 @@ export default function Home() {
         <section className="glass rounded-[32px] p-6 md:p-8 lg:p-12">
           <p className="pill badge-accent">Executive Vision Report</p>
           <h1 className="text-display mt-4 text-2xl font-semibold leading-tight md:text-4xl lg:text-5xl">
-            Workshop synthesis and direction
+            Market Leadership and Strategic Growth
           </h1>
           <p className="mt-4 text-base text-[color:var(--ink-muted)] md:text-lg">
-            The organisation is operating in a market evolving faster than traditional models can
-            support. The challenge is not a lack of capability, but the need to realign structure,
-            technology, and narrative to match the modern market.
+            The DREAM workshop established PAM Wellness's ambition to move beyond incremental improvement and position itself as a market leader in employee mental health and wellbeing. This represents a strategic growth opportunity to actively shape the future of EAP-led care delivery.
           </p>
+          <div className="mt-6 rounded-xl bg-amber-50 p-4 border border-amber-200">
+            <h3 className="text-sm font-semibold text-amber-900 mb-3">Leadership Focus Areas:</h3>
+            <ul className="space-y-2 text-sm text-amber-800">
+              <li>• Creating meaningful differentiation from competitors</li>
+              <li>• Delivering a more proactive and connected model of care</li>
+              <li>• Providing greater visibility and insight for employer clients</li>
+              <li>• Strengthening PAM's position as a trusted wellbeing partner</li>
+            </ul>
+          </div>
           <div className="mt-6 flex flex-wrap gap-2 text-sm md:gap-3">
             <a 
               href="/summary#strategic-inflection-point" 

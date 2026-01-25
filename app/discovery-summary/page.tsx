@@ -200,6 +200,33 @@ export default function DiscoverySummaryPage() {
           </div>
         </header>
 
+        {/* Technology Context Section */}
+        <section className="card p-6">
+          <h2 className="text-display text-xl mb-4">Technology Reality and Current Constraints</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            The workshop identified important context around PAM's existing technology estate that informs many of the challenges experienced today.
+          </p>
+          <div className="rounded-xl bg-blue-50 p-4 border border-blue-200">
+            <h3 className="text-sm font-semibold text-blue-900 mb-3">Platform Origin and Limitations</h3>
+            <p className="text-sm text-blue-800 mb-3">
+              While core systems are in place and supporting daily operations, the primary platform currently used was originally designed for Occupational Health delivery rather than Employee Assistance Programme workflows.
+            </p>
+            <p className="text-sm text-blue-800 mb-3">
+              Over time, EAP services have been adapted onto this platform as effectively as possible. However, this has resulted in several structural limitations:
+            </p>
+            <ul className="space-y-1 text-sm text-blue-800 ml-4">
+              <li>• EAP journeys are not natively supported</li>
+              <li>• Case management relies heavily on manual coordination</li>
+              <li>• Interactions are captured as isolated events rather than as part of a continuous journey</li>
+              <li>• Limited end-to-end visibility across multi-touchpoint care</li>
+              <li>• Fragmented data across channels and interactions</li>
+            </ul>
+          </div>
+          <p className="text-sm text-[color:var(--ink-muted)] mt-4">
+            This context is important, as the majority of constraints identified during discovery stem not from people or process maturity, but from operating an EAP service on technology that was never purpose-built for that model.
+          </p>
+        </section>
+
         {/* Main Dashboard Grid */}
         <div className="grid gap-6 lg:grid-cols-[1fr_400px]">
           {/* Left Column - Dimension Cards */}

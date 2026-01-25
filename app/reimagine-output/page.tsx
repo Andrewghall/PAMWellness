@@ -252,6 +252,49 @@ export default function ReimagineOutputPage() {
           </div>
         </section>
 
+        {/* Shifting Left in Care Delivery */}
+        <section className="card p-6">
+          <h2 className="text-display text-xl mb-4">Supporting People Before Crisis</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            A strong theme throughout the reimagine discussion was the opportunity for PAM Wellness to support individuals and client organisations earlier in the wellbeing lifecycle — before employees reach acute distress or crisis.
+          </p>
+          <div className="rounded-xl bg-green-50 p-4 border border-green-200">
+            <h3 className="text-sm font-semibold text-green-900 mb-3">From Reactive to Proactive</h3>
+            <p className="text-sm text-green-800 mb-3">
+              Participants recognised that traditional EAP models are predominantly reactive, engaging once an individual has already reached a point of significant need. However, the greatest impact for both people and employers exists further upstream.
+            </p>
+            <p className="text-sm text-green-800 mb-3">
+              The session highlighted a future model where PAM is able to:
+            </p>
+            <ul className="space-y-1 text-sm text-green-800 ml-4">
+              <li>• Identify early behavioural and engagement indicators</li>
+              <li>• Detect patterns and trends across anonymised client populations</li>
+              <li>• Provide insight into emerging wellbeing risks</li>
+              <li>• Support targeted education and preventative interventions</li>
+            </ul>
+          </div>
+          <div className="mt-4 rounded-xl bg-emerald-50 p-4 border border-emerald-200">
+            <h3 className="text-sm font-semibold text-emerald-900 mb-3">Preventative Intelligence Layer</h3>
+            <p className="text-sm text-emerald-800 mb-3">
+              This reflects the principle that outcomes improve not by measuring crises more effectively, but by reducing the conditions that lead to crisis.
+            </p>
+            <p className="text-sm text-emerald-800 mb-3">
+              In this reimagined model:
+            </p>
+            <ul className="space-y-1 text-sm text-emerald-800 ml-4">
+              <li>• CareCore does not replace clinical services</li>
+              <li>• It enhances visibility and understanding earlier in the journey</li>
+              <li>• It enables proactive rather than retrospective intervention</li>
+            </ul>
+          </div>
+          <p className="text-sm text-[color:var(--ink-muted)] mt-4">
+            For employer clients, this creates a clearer return on investment through reduced lower-level absence, earlier access to support services, improved wellbeing literacy, and better utilisation of EAP provision.
+          </p>
+          <p className="text-sm text-[color:var(--ink-muted)] mt-4">
+            This preventative intelligence layer sits alongside PAM's clinical model and represents a significant opportunity for differentiation within the EAP market.
+          </p>
+        </section>
+
         {/* Journey Stages Strip - Clickable to Journey Builder */}
         <Link
           href="/journey"
@@ -443,6 +486,33 @@ export default function ReimagineOutputPage() {
             )}
           </section>
         </div>
+
+        {/* Platform Vision Alignment */}
+        <section className="card p-6">
+          <h2 className="text-display text-xl mb-4">Platform Vision Alignment</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            The workshop confirmed that the future care model must:
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
+              <h3 className="text-sm font-semibold text-purple-900 mb-3">Core Principles</h3>
+              <ul className="space-y-2 text-sm text-purple-800">
+                <li>• Treat care as a continuous journey rather than isolated interactions</li>
+                <li>• Maintain a single, shared understanding of each individual</li>
+                <li>• Support clinicians, operations, and clients through consistent intelligence</li>
+                <li>• Allow PAM to scale without increasing clinical risk or administrative burden</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-indigo-50 p-4 border border-indigo-200">
+              <h3 className="text-sm font-semibold text-indigo-900 mb-3">CareCore Position</h3>
+              <ul className="space-y-2 text-sm text-indigo-800">
+                <li>• A joined-up care operating model</li>
+                <li>• A unified intelligence foundation</li>
+                <li>• A platform enabling proactive, preventative, and responsive support</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
         {/* Direction of Travel */}
         <section className="glass rounded-[24px] p-8">

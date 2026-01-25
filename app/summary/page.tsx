@@ -262,6 +262,35 @@ export default function SummaryPage() {
             </section>
           </div>
         </div>
+
+        {/* Strategic Intent Summary */}
+        <section className="glass rounded-[24px] p-6 mt-6">
+          <h3 className="text-display text-lg mb-4">Summary of Strategic Intent</h3>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            The DREAM workshop established a clear shared ambition:
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "To position PAM Wellness as a market leader, not a follower",
+              "To shift from reactive care to proactive wellbeing support", 
+              "To unify fragmented interactions into continuous journeys",
+              "To enhance clinical delivery without compromising governance",
+              "To provide measurable value for employer clients"
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-3 rounded-xl bg-emerald-50 p-3 border border-emerald-200">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-xs text-white font-bold">
+                  {i + 1}
+                </span>
+                <span className="text-sm text-emerald-800">{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 rounded-xl bg-[color:var(--accent)]/5 p-4 border-l-4 border-[color:var(--accent)]">
+            <p className="text-sm text-[color:var(--ink-muted)] font-medium">
+              CareCore is the mechanism through which this ambition becomes operational reality.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );

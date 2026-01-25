@@ -228,6 +228,43 @@ export default function ConstraintsPage() {
               </div>
             </section>
 
+            {/* Clinical Autonomy and Governance */}
+            <section className="card p-6">
+              <h3 className="text-display text-lg mb-4">Clinical Autonomy and Governance</h3>
+              <div className="rounded-xl bg-red-50 p-4 border border-red-200">
+                <h4 className="text-sm font-semibold text-red-900 mb-3">Assisted Intelligence, Not Automated Decisions</h4>
+                <p className="text-sm text-red-800 mb-3">
+                  A clear and consistent message throughout the workshop was the importance of protecting clinical judgement and professional autonomy.
+                </p>
+                <p className="text-sm text-red-800 mb-3">
+                  While the future platform is expected to provide guidance, insight, and support, it must never remove decision-making authority from clinicians.
+                </p>
+              </div>
+              <div className="mt-4 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl bg-green-50 p-4 border border-green-200">
+                  <h4 className="text-sm font-semibold text-green-900 mb-3">What CareCore May Do</h4>
+                  <ul className="space-y-1 text-sm text-green-800">
+                    <li>• Surface insights and signals</li>
+                    <li>• Highlight risks, gaps, or patterns</li>
+                    <li>• Suggest next best actions</li>
+                    <li>• Provide pathway-aligned guidance</li>
+                  </ul>
+                </div>
+                <div className="rounded-xl bg-red-50 p-4 border border-red-200">
+                  <h4 className="text-sm font-semibold text-red-900 mb-3">What CareCore Must Not Do</h4>
+                  <ul className="space-y-1 text-sm text-red-800">
+                    <li>• Make clinical decisions</li>
+                    <li>• Diagnose conditions</li>
+                    <li>• Override professional judgement</li>
+                    <li>• Remove accountability from qualified clinicians</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="text-sm text-[color:var(--ink-muted)] mt-4">
+                All intelligence is designed to assist, not automate, clinical decision-making. This principle ensures PAM Wellness retains full clinical integrity while benefiting from improved consistency, visibility, and operational support across the care journey.
+              </p>
+            </section>
+
             {/* Constraint Summary */}
             <section className="glass rounded-[24px] p-6">
               <h3 className="text-display text-lg">Design Anchors</h3>
