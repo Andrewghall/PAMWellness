@@ -275,7 +275,7 @@ export default function CommercialEstimatesPage() {
 
         {/* Delivery Horizons */}
         <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Delivery Horizons</h2>
+          <h2 className="text-display text-2xl mb-4">Delivery Horizons (For example)</h2>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
             The Horizon roadmap delivers specific platform specifications and features at each phase, with functional depth built out progressively within each horizon.
           </p>
