@@ -105,7 +105,7 @@ export default function AdminDashboard() {
               {[
                 { id: "overview", label: "Overview" },
                 { id: "pages", label: "Page Analytics" },
-                { id: "users", label: "User Behavior" },
+                { id: "users", label: "User Behaviour" },
                 { id: "interactions", label: "Interactions" },
               ].map((tab) => (
                 <button
