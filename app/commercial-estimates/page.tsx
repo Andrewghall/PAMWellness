@@ -191,15 +191,15 @@ export default function CommercialEstimatesPage() {
             <div className="mt-3 p-3 bg-white rounded-lg border border-emerald-300">
               <h4 className="text-sm font-semibold text-emerald-900 mb-2">What is the Horizon Roadmap?</h4>
               <p className="text-sm text-emerald-800">
-                The Horizon roadmap defines three phased delivery stages:
+                The Horizon roadmap delivers specific platform specifications and features in three phases:
               </p>
               <ul className="mt-2 space-y-1 text-sm text-emerald-800 ml-4">
-                <li><strong>Horizon 1 (H1):</strong> MVP Foundation - core platform and essential workflows</li>
-                <li><strong>Horizon 2 (H2):</strong> Expansion - advanced features and deeper integrations</li>
-                <li><strong>Horizon 3 (H3):</strong> Optimisation & Scale - intelligence, automation, and commercialisation</li>
+                <li><strong>Horizon 1 (H1):</strong> Core Platform Specifications - foundational features and core EAP workflows</li>
+                <li><strong>Horizon 2 (H2):</strong> Advanced Feature Specifications - expanded capabilities and deeper integrations</li>
+                <li><strong>Horizon 3 (H3):</strong> Enterprise Platform Specifications - enterprise-grade capabilities and operational excellence</li>
               </ul>
               <p className="text-sm text-emerald-800 mt-2">
-                Each horizon builds upon the previous one, creating a clear path from MVP to full platform capability.
+                Each horizon delivers specific features with progressive functional depth built out within each phase.
               </p>
             </div>
           </div>
@@ -277,73 +277,72 @@ export default function CommercialEstimatesPage() {
         <section className="card p-6">
           <h2 className="text-display text-2xl mb-4">Delivery Horizons</h2>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            The Horizon roadmap provides a structured approach to platform evolution, ensuring each phase builds solid foundations for the next. This phased delivery manages risk while delivering incremental value.
+            The Horizon roadmap delivers specific platform specifications and features at each phase, with functional depth built out progressively within each horizon.
           </p>
           
           {/* Horizon 1 */}
           <div className="mb-6">
-            <h3 className="text-display text-lg mb-3 text-emerald-700">Horizon 1 — MVP (Foundation)</h3>
-            <p className="text-sm text-emerald-600 mb-3 font-medium">Goal: Deliver usable value quickly while establishing the long-term architecture.</p>
+            <h3 className="text-display text-lg mb-3 text-emerald-700">Horizon 1 — Core Platform Specifications</h3>
+            <p className="text-sm text-emerald-600 mb-3 font-medium">Delivers foundational platform features and core EAP workflows.</p>
             <div className="rounded-xl bg-emerald-50 p-4 border border-emerald-200">
-              <h4 className="text-sm font-semibold text-emerald-900 mb-2">Capabilities</h4>
+              <h4 className="text-sm font-semibold text-emerald-900 mb-2">Key Specifications Delivered</h4>
               <ul className="space-y-1 text-sm text-emerald-800">
-                <li>• Secure portal entry point</li>
-                <li>• Role-based access (corporate, clinician, admin)</li>
-                <li>• Core workflows aligned to agreed journeys</li>
-                <li>• Initial automation rules</li>
-                <li>• Data ingestion from agreed systems</li>
-                <li>• Analytics foundation</li>
+                <li>• Secure portal infrastructure and authentication system</li>
+                <li>• Role-based access control (corporate, clinician, admin)</li>
+                <li>• Patient Buddy journey workflow engine</li>
+                <li>• Clinician Buddy journey workflow engine</li>
+                <li>• Basic case management and tracking</li>
+                <li>• Integration framework for RingCentral and core systems</li>
+                <li>• Foundation analytics and reporting dashboard</li>
               </ul>
-              <h4 className="text-sm font-semibold text-emerald-900 mb-2 mt-3">Outcome</h4>
-              <ul className="space-y-1 text-sm text-emerald-800">
-                <li>• Operational MVP</li>
-                <li>• Early efficiency gains</li>
-                <li>• Clear adoption baseline</li>
-              </ul>
+              <h4 className="text-sm font-semibold text-emerald-900 mb-2 mt-3">Functional Depth</h4>
+              <p className="text-sm text-emerald-800">
+                Core workflows operational with essential functionality - sufficient for daily EAP operations and immediate value delivery.
+              </p>
             </div>
           </div>
 
           {/* Horizon 2 */}
           <div className="mb-6">
-            <h3 className="text-display text-lg mb-3 text-blue-700">Horizon 2 — Expansion</h3>
-            <p className="text-sm text-blue-600 mb-3 font-medium">Goal: Extend intelligence, automation, and insight.</p>
+            <h3 className="text-display text-lg mb-3 text-blue-700">Horizon 2 — Advanced Feature Specifications</h3>
+            <p className="text-sm text-blue-600 mb-3 font-medium">Expands platform capabilities with advanced EAP features and deeper integrations.</p>
             <div className="rounded-xl bg-blue-50 p-4 border border-blue-200">
-              <h4 className="text-sm font-semibold text-blue-900 mb-2">Capabilities</h4>
+              <h4 className="text-sm font-semibold text-blue-900 mb-2">Key Specifications Delivered</h4>
               <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Advanced dashboards</li>
-                <li>• Journey-level analytics</li>
-                <li>• AI-supported decision flows</li>
-                <li>• Deeper system integrations</li>
-                <li>• Automation orchestration across actors</li>
+                <li>• Advanced journey analytics and insights</li>
+                <li>• AI-supported decision guidance tools</li>
+                <li>• Enhanced automation and orchestration engine</li>
+                <li>• Multi-channel communication management</li>
+                <li>• Advanced reporting and business intelligence</li>
+                <li>• Extended integration capabilities (HR systems, benefits platforms)</li>
+                <li>• Advanced user experience and personalization</li>
               </ul>
-              <h4 className="text-sm font-semibold text-blue-900 mb-2 mt-3">Outcome</h4>
-              <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Reduced manual effort</li>
-                <li>• Improved insight velocity</li>
-                <li>• Strong margin leverage</li>
-              </ul>
+              <h4 className="text-sm font-semibold text-blue-900 mb-2 mt-3">Functional Depth</h4>
+              <p className="text-sm text-blue-800">
+                Sophisticated workflow automation and intelligence layers - enabling proactive EAP service delivery and operational efficiency.
+              </p>
             </div>
           </div>
 
           {/* Horizon 3 */}
           <div>
-            <h3 className="text-display text-lg mb-3 text-purple-700">Horizon 3 — Optimisation & Scale</h3>
-            <p className="text-sm text-purple-600 mb-3 font-medium">Goal: Create advanced capabilities and operational excellence.</p>
+            <h3 className="text-display text-lg mb-3 text-purple-700">Horizon 3 — Enterprise Platform Specifications</h3>
+            <p className="text-sm text-purple-600 mb-3 font-medium">Delivers enterprise-grade platform capabilities and advanced operational excellence.</p>
             <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
-              <h4 className="text-sm font-semibold text-purple-900 mb-2">Capabilities</h4>
+              <h4 className="text-sm font-semibold text-purple-900 mb-2">Key Specifications Delivered</h4>
               <ul className="space-y-1 text-sm text-purple-800">
-                <li>• Multi-entity configuration</li>
-                <li>• Intelligence ownership layer</li>
-                <li>• Advanced orchestration</li>
-                <li>• Predictive analytics</li>
-                <li>• Enhanced reporting and insights</li>
+                <li>• Multi-entity and multi-tenant architecture</li>
+                <li>• Predictive analytics and early warning systems</li>
+                <li>• Advanced orchestration and workflow intelligence</li>
+                <li>• Enterprise-grade security and compliance features</li>
+                <li>• Advanced API ecosystem and partner integrations</li>
+                <li>• Comprehensive business intelligence and strategic insights</li>
+                <li>• Platform configuration and customization tools</li>
               </ul>
-              <h4 className="text-sm font-semibold text-purple-900 mb-2 mt-3">Outcome</h4>
-              <ul className="space-y-1 text-sm text-purple-800">
-                <li>• Platform differentiation</li>
-                <li>• Scalable operating model</li>
-                <li>• Advanced EAP capabilities</li>
-              </ul>
+              <h4 className="text-sm font-semibold text-purple-900 mb-2 mt-3">Functional Depth</h4>
+              <p className="text-sm text-purple-800">
+                Full enterprise platform capabilities - supporting complex EAP service models, advanced analytics, and scalable operations.
+              </p>
             </div>
           </div>
         </section>
