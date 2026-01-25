@@ -54,8 +54,8 @@ export default function MobileHeader() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-white shadow-lg border-b border-black/10 mobile-menu-container">
-          <div className="max-h-96 overflow-y-auto">
+        <div className="lg:hidden fixed top-24 left-0 right-0 z-40 bg-white shadow-lg border-b border-black/10 mobile-menu-container">
+          <div className="max-h-80 overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-black/10">
               <h2 className="text-lg font-semibold text-black">Navigation</h2>
               <button
