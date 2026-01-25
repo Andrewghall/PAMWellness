@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useAdmin } from './AdminContext';
 
 export default function MobileHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAdmin } = useAdmin();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -18,6 +20,7 @@ export default function MobileHeader() {
     { href: "/commercial-estimates", label: "Commercial estimates" },
     { href: "/summary", label: "Summary" },
     { href: "/journey", label: "Journey mapping" },
+    ...(isAdmin ? [{ href: "/admin", label: "Admin Dashboard" }] : []),
   ];
 
   return (

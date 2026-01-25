@@ -3,17 +3,22 @@
 import { useState, useEffect } from "react";
 
 const ACCESS_CODE = "PAMWELLNESS2026";
+const ADMIN_CODE = "ADMIN2026";
 const AUTH_KEY = "carecore_authenticated";
+const ADMIN_AUTH_KEY = "carecore_admin_authenticated";
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean | null>(null);
   const [codeInput, setCodeInput] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     // Check if already authenticated in session storage
     const isAuth = sessionStorage.getItem(AUTH_KEY) === "true";
+    const isAdminAuth = sessionStorage.getItem(ADMIN_AUTH_KEY) === "true";
     setIsAuthenticated(isAuth);
+    setIsAdminAuthenticated(isAdminAuth);
   }, []);
 
   const handleCodeSubmit = (e: React.FormEvent) => {
@@ -21,6 +26,12 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
     if (codeInput === ACCESS_CODE) {
       sessionStorage.setItem(AUTH_KEY, "true");
       setIsAuthenticated(true);
+      setError("");
+    } else if (codeInput === ADMIN_CODE) {
+      sessionStorage.setItem(AUTH_KEY, "true");
+      sessionStorage.setItem(ADMIN_AUTH_KEY, "true");
+      setIsAuthenticated(true);
+      setIsAdminAuthenticated(true);
       setError("");
     } else {
       setError("Invalid access code");
