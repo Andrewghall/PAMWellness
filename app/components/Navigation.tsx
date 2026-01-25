@@ -24,7 +24,7 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
       <AnalyticsTracker page={typeof window !== 'undefined' ? window.location.pathname : '/'} />
       <header className="sticky top-0 z-20 border-b border-black/10 bg-white/70 backdrop-blur-lg">
         <div className="flex w-full items-center justify-between px-6 py-4">
-          <a href="/" className="flex items-center gap-4">
+          <a href="/" className="flex items-center gap-4 flex-shrink-0">
             <img
               src="/pam-wellness-logo.png"
               alt="PAM Wellness"
@@ -37,16 +37,24 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           </a>
           
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-6 text-sm font-medium text-black/70 lg:flex">
-            {navItems.map((item) => (
-              <a key={item.href} href={item.href}>
-                {item.label}
-              </a>
-            ))}
+          <nav className="hidden lg:flex lg:flex-1 lg:justify-center lg:items-center lg:gap-8">
+            <div className="flex items-center gap-8 text-sm font-medium text-black/70">
+              {navItems.map((item) => (
+                <a 
+                  key={item.href} 
+                  href={item.href}
+                  className="relative py-2 px-3 rounded-lg transition-all duration-200 hover:bg-black/5 hover:text-black hover:font-medium"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </nav>
 
           {/* Mobile Hamburger Menu */}
-          <MobileHeader />
+          <div className="flex-shrink-0">
+            <MobileHeader />
+          </div>
         </div>
       </header>
       {children}

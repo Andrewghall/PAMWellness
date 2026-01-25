@@ -39,13 +39,13 @@ export default function MobileHeader() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-lg border-b border-black/10">
-          <nav className="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-black/70">
+          <nav className="flex flex-col px-6 py-4 gap-2 text-sm font-medium text-black/70">
             {navItems.map((item) => (
               <a 
                 key={item.href} 
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2"
+                className="py-3 px-4 rounded-lg transition-all duration-200 hover:bg-black/5 hover:text-black"
               >
                 {item.label}
               </a>
