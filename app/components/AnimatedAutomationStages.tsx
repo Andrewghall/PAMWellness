@@ -161,7 +161,9 @@ export default function AnimatedAutomationStages() {
     <section id="automation" className="card overflow-hidden p-8 md:p-12">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="space-y-4">
-          <p className="pill">Animated Intelligence Evolution</p>
+          <a href="#automation" className="pill hover:bg-black/10 transition-colors cursor-pointer">
+            Animated Intelligence Evolution
+          </a>
           <h2 className="text-display text-4xl">Intelligence emerges from signal</h2>
           <p className="text-sm text-[color:var(--ink-muted)]">
             Adjust the maturity to feel the system move from chaos to coherence.

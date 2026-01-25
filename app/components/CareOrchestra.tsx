@@ -42,7 +42,9 @@ export default function CareOrchestra() {
 
       <div className="relative z-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-xl">
-          <p className="pill">Human + AI Collaboration Experience</p>
+          <a href="#orchestra" className="pill hover:bg-black/10 transition-colors cursor-pointer">
+          Human + AI Collaboration Experience
+        </a>
           <h2 className="text-display mt-4 text-4xl">From friction to flow</h2>
           <p className="mt-4 text-sm text-[color:var(--ink-muted)]">
             AI prepares the field. Humans decide. Patients stabilise.
