@@ -431,6 +431,127 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
+        {/* Delivery Structure */}
+        <section className="card p-6">
+          <h2 className="text-display text-2xl mb-4">Delivery Structure</h2>
+          
+          {/* Phase 1 */}
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-emerald-700">Phase 1 — Discovery (Week 1)</h3>
+            <p className="text-sm text-emerald-600 mb-3 font-medium">Investment: £12,000</p>
+            
+            <div className="rounded-xl bg-emerald-50 p-4 border border-emerald-200">
+              <h4 className="text-sm font-semibold text-emerald-900 mb-3">Business outputs:</h4>
+              <ul className="space-y-1 text-sm text-emerald-800">
+                <li>• Agreed future operating model</li>
+                <li>• Defined patient, clinician, corporate and operational journeys</li>
+                <li>• Confirmed KPIs and success measures</li>
+                <li>• SOP changes required to support the new model</li>
+                <li>• Portal purpose, user roles and access definition</li>
+                <li>• Clear MVP scope and Horizon roadmap</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Phase 2 */}
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-blue-700">Phase 2 — Proof of Value (10 days)</h3>
+            <p className="text-sm text-blue-600 mb-3 font-medium">Required • Investment: £20,000 • Fully credited against MVP build</p>
+            
+            <div className="rounded-xl bg-blue-50 p-4 border border-blue-200 mb-4">
+              <h4 className="text-sm font-semibold text-blue-900 mb-3">The POV will explicitly prove:</h4>
+              <ul className="space-y-1 text-sm text-blue-800">
+                <li>• Integration with RingCentral for live communications and workflow triggers</li>
+                <li>• Integration with the existing client portal, demonstrating coexistence or migration pathways</li>
+                <li>• Secure data exchange between the platform and current systems</li>
+                <li>• End-to-end journey execution across tools</li>
+                <li>• Buddy workflows operating across integrated systems</li>
+              </ul>
+            </div>
+            
+            <div className="rounded-xl bg-blue-50 p-4 border border-blue-200">
+              <h4 className="text-sm font-semibold text-blue-900 mb-3">Business outputs:</h4>
+              <ul className="space-y-1 text-sm text-blue-800">
+                <li>• Working proof environment connected to RingCentral</li>
+                <li>• Working proof environment connected to the existing portal</li>
+                <li>• Demonstrated call, message and event flow across systems</li>
+                <li>• Validated patient and clinician journeys spanning current and new platforms</li>
+                <li>• Confirmed integration patterns and operating assumptions</li>
+                <li>• Finalised MVP scope validated through real execution</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Phase 3 */}
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-purple-700">Phase 3 — Horizon 1: MVP Build</h3>
+            <p className="text-sm text-purple-600 mb-3 font-medium">Build value: £138,000 • Net payable after POV credit: £118,000</p>
+            
+            <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
+              <h4 className="text-sm font-semibold text-purple-900 mb-3">Business outcomes delivered:</h4>
+              <ul className="space-y-1 text-sm text-purple-800">
+                <li>• Single operational group portal</li>
+                <li>• Live patient journeys</li>
+                <li>• Live clinician journeys</li>
+                <li>• Patient Buddy supporting proactive and reactive engagement</li>
+                <li>• Clinician Buddy supporting workload management, documentation and escalation</li>
+                <li>• Integrated communications aligned to RingCentral</li>
+                <li>• Migration or coexistence with the existing portal as defined during POV</li>
+                <li>• Executive KPI dashboards</li>
+                <li>• Standardised SOPs and governance model</li>
+                <li>• Fully operational digital care platform</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Phase 4 */}
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-amber-700">Phase 4 — Operate & Support (Year 1)</h3>
+            <p className="text-sm text-amber-600 mb-3 font-medium">Investment: £100,000 per annum</p>
+            
+            <div className="rounded-xl bg-amber-50 p-4 border border-amber-200">
+              <h4 className="text-sm font-semibold text-amber-900 mb-3">Business coverage:</h4>
+              <ul className="space-y-1 text-sm text-amber-800">
+                <li>• Platform operation and support</li>
+                <li>• Monitoring and service assurance</li>
+                <li>• Ongoing optimisation</li>
+                <li>• Minor enhancements</li>
+                <li>• Performance and stability management</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Horizon 2 */}
+          <div className="mb-8">
+            <h3 className="text-display text-lg mb-3 text-indigo-700">Horizon 2 — Expansion</h3>
+            <p className="text-sm text-indigo-600 mb-3 font-medium">Investment: £50,000 (included in Year 1)</p>
+            
+            <div className="rounded-xl bg-indigo-50 p-4 border border-indigo-200">
+              <h4 className="text-sm font-semibold text-indigo-900 mb-3">Business focus:</h4>
+              <ul className="space-y-1 text-sm text-indigo-800">
+                <li>• Extended automation across journeys</li>
+                <li>• Enhanced insight and reporting</li>
+                <li>• Additional integration depth</li>
+                <li>• Optimisation of patient and clinician experience</li>
+                <li>• Quality framework implementation</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Horizon 3 */}
+          <div className="mb-6">
+            <h3 className="text-display text-lg mb-3 text-rose-700">Horizon 3 — Additional Scope</h3>
+            
+            <div className="rounded-xl bg-rose-50 p-4 border border-rose-200">
+              <ul className="space-y-1 text-sm text-rose-800">
+                <li>• Future capability only</li>
+                <li>• Defined once Horizon 2 priorities are known</li>
+                <li>• Priced separately based on business requirements</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Year 1 Investment Summary */}
         <section className="card p-6">
           <h2 className="text-display text-xl mb-4">Year 1 Investment Summary</h2>
