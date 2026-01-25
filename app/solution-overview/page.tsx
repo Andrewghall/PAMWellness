@@ -446,7 +446,7 @@ export default function SolutionOverviewPage() {
                 {designPrinciples.slice(0, 3).map((principle, i) => (
                   <li key={i}>
                     <p className="text-sm font-semibold text-black">{principle.title}</p>
-                    <p className="mt-1 text-xs text-[color:var(--ink-muted)]">{principle.description.slice(0, 80)}...</p>
+                    <p className="mt-1 text-xs text-[color:var(--ink-muted)]">{principle.description}</p>
                   </li>
                 ))}
               </ul>
