@@ -183,12 +183,12 @@ export default function SolutionOverviewPage() {
             </div>
           </button>
           <button
-            onClick={() => setFullscreenImage({ src: "/pam-wellness-master.png?v=5", alt: "PAM Wellness CareCore Solution Overview" })}
+            onClick={() => setFullscreenImage({ src: "/PAM Wellness master image.png", alt: "PAM Wellness CareCore Solution Overview" })}
             title="Click to view full size"
             className="group relative w-1/2 overflow-hidden rounded-2xl border border-black/10 bg-white transition-all hover:border-[color:var(--accent)] hover:shadow-lg"
           >
             <img
-              src="/pam-wellness-master.png?v=5"
+              src="/PAM Wellness master image.png"
               alt="PAM Wellness CareCore Solution Overview"
               className="w-full"
             />
