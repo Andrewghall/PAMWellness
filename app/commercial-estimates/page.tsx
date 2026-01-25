@@ -374,6 +374,7 @@ export default function CommercialEstimatesPage() {
                 <li>• Extended analytics</li>
                 <li>• Further system integrations</li>
                 <li>• Journey optimisation</li>
+                <li>• Quality framework implementation</li>
               </ul>
               <p className="text-sm text-blue-800 mt-3 font-medium">Deliverables are defined only once Horizon 1 is operational.</p>
             </div>
