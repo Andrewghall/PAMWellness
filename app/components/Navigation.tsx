@@ -25,14 +25,14 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
       <AnalyticsTracker page={typeof window !== 'undefined' ? window.location.pathname : '/'} />
       <SmoothScroll />
       <header className="sticky top-0 z-20 border-b border-black/10 bg-white/70 backdrop-blur-lg">
-        <div className="flex w-full items-center justify-between px-6 py-4">
+        <div className="flex w-full items-center justify-between px-4 py-3 md:px-6 md:py-4">
           <a href="/" className="flex items-center gap-4 flex-shrink-0">
             <img
               src="/pam-wellness-logo.png"
               alt="PAM Wellness"
-              className="h-10 w-auto"
+              className="h-8 w-auto md:h-10"
             />
-            <div>
+            <div className="hidden md:block">
               <p className="text-sm uppercase tracking-[0.3em] text-black/50">CARECORE</p>
               <p className="text-[10px] text-black/40">AI-Enabled Wellness Platform</p>
             </div>
