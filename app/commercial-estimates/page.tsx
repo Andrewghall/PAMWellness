@@ -649,25 +649,30 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
-        {/* Client Responsibilities */}
+        {/* Client Involvement */}
         <section className="card p-6">
-          <h2 className="text-display text-xl mb-4">Client Responsibilities</h2>
+          <h2 className="text-display text-xl mb-4">Your Involvement in the Project</h2>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            As the client, you will need to provide:
+            Throughout the project, you can expect to be involved in:
           </p>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              "A named product owner to guide decisions",
-              "Access to subject matter experts for domain knowledge",
-              "System documentation and technical credentials",
-              "Timely feedback on designs and deliverables",
-              "Availability for decision-making and approvals"
+              "Guiding decisions through your named product owner",
+              "Providing domain expertise through subject matter specialists",
+              "Sharing system documentation and access credentials",
+              "Reviewing and providing feedback on designs and deliverables",
+              "Participating in key decision-making and approval processes"
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-[color:var(--ink-muted)]">
                 <span className="text-[color:var(--accent)]">•</span>
                 {item}
               </div>
             ))}
+          </div>
+          <div className="mt-4 rounded-xl bg-blue-50 p-4 border border-blue-200">
+            <p className="text-sm text-blue-800">
+              Your involvement ensures the solution aligns perfectly with your business needs and operational requirements.
+            </p>
           </div>
         </section>
 
