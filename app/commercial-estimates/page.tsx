@@ -63,10 +63,10 @@ export default function CommercialEstimatesPage() {
         <header className="glass rounded-[32px] p-8">
           <p className="pill badge-accent">Application Delivery Proposal</p>
           <h1 className="text-display mt-4 text-4xl md:text-5xl">
-            Recommended Next Steps & Commercial Model
+            Building Your New EAP Platform
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-[color:var(--ink-muted)]">
-            This page defines the recommended next steps, workshop structure, delivery horizons, and commercial model to progress from the DREAM outcomes into a live, scalable application.
+            This page defines the recommended next steps, workshop structure, delivery horizons, and commercial model to progress from the DREAM outcomes into your new, scalable EAP platform.
           </p>
         </header>
 
@@ -328,7 +328,7 @@ export default function CommercialEstimatesPage() {
           {/* Horizon 3 */}
           <div>
             <h3 className="text-display text-lg mb-3 text-purple-700">Horizon 3 — Optimisation & Scale</h3>
-            <p className="text-sm text-purple-600 mb-3 font-medium">Goal: Create defensible IP and valuation uplift.</p>
+            <p className="text-sm text-purple-600 mb-3 font-medium">Goal: Create advanced capabilities and operational excellence.</p>
             <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
               <h4 className="text-sm font-semibold text-purple-900 mb-2">Capabilities</h4>
               <ul className="space-y-1 text-sm text-purple-800">
@@ -336,13 +336,13 @@ export default function CommercialEstimatesPage() {
                 <li>• Intelligence ownership layer</li>
                 <li>• Advanced orchestration</li>
                 <li>• Predictive analytics</li>
-                <li>• Optional commercialisation pathways</li>
+                <li>• Enhanced reporting and insights</li>
               </ul>
               <h4 className="text-sm font-semibold text-purple-900 mb-2 mt-3">Outcome</h4>
               <ul className="space-y-1 text-sm text-purple-800">
                 <li>• Platform differentiation</li>
                 <li>• Scalable operating model</li>
-                <li>• Valuation-aligned architecture</li>
+                <li>• Advanced EAP capabilities</li>
               </ul>
             </div>
           </div>
@@ -490,8 +490,8 @@ export default function CommercialEstimatesPage() {
               "Fast time to value",
               "Controlled investment",
               "Reduced delivery risk",
-              "Clear commercial justification",
-              "Architecture aligned to long-term valuation"
+              "Clear operational benefits",
+              "Architecture aligned to EAP service excellence"
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 text-sm text-[color:var(--ink-muted)]">
                 <span className="text-[color:var(--accent)]">•</span>
@@ -501,7 +501,7 @@ export default function CommercialEstimatesPage() {
           </div>
           <div className="mt-4 rounded-xl bg-[color:var(--accent)]/5 p-4 border-l-4 border-[color:var(--accent)]">
             <p className="text-sm text-[color:var(--ink-muted)] font-medium">
-              The MVP establishes the platform foundation, with future horizons unlocking automation, intelligence, and scalable growth.
+              The MVP establishes the foundation for your new EAP Platform, with future horizons unlocking automation, intelligence, and scalable growth.
             </p>
           </div>
         </section>
