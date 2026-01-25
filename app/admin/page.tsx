@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useAdmin } from "../components/AdminContext";
-import Navigation from "../components/Navigation";
 
 interface PageView {
   page: string;
@@ -93,13 +92,12 @@ export default function AdminDashboard() {
   }, {} as Record<string, { pages: Set<string>; totalTime: number; firstVisit: number }>);
 
   return (
-    <Navigation>
-      <main className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-            <p className="text-gray-600 mt-2">Real-time analytics and user insights</p>
-          </div>
+    <main className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+          <p className="text-gray-600 mt-2">Real-time analytics and user insights</p>
+        </div>
 
           {/* Tab Navigation */}
           <div className="border-b border-gray-200 mb-8">
@@ -286,6 +284,5 @@ export default function AdminDashboard() {
           )}
         </div>
       </main>
-    </Navigation>
   );
 }

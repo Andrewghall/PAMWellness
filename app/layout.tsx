@@ -3,6 +3,7 @@ import { DM_Serif_Display, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import AuthGate from "./components/AuthGate";
 import { AdminProvider } from "./components/AdminContext";
+import Navigation from "./components/Navigation";
 
 const displayFont = DM_Serif_Display({
   variable: "--font-display",
@@ -40,7 +41,9 @@ export default function RootLayout({
       <body className={`${displayFont.variable} ${bodyFont.variable} antialiased`}>
         <AdminProvider>
           <AuthGate>
-            {children}
+            <Navigation>
+              {children}
+            </Navigation>
           </AuthGate>
         </AdminProvider>
       </body>

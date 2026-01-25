@@ -1,5 +1,3 @@
-import Navigation from "./components/Navigation";
-
 export default function Home() {
   const sections = [
     {
@@ -45,8 +43,7 @@ export default function Home() {
   ];
 
   return (
-    <Navigation>
-      <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10">
+    <main className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10">
         <section className="glass rounded-[32px] p-8 md:p-12">
           <p className="pill badge-accent">Executive Vision Report</p>
           <h1 className="text-display mt-4 text-4xl font-semibold leading-tight md:text-5xl">
@@ -82,6 +79,5 @@ export default function Home() {
           ))}
         </section>
       </main>
-    </Navigation>
   );
 }
