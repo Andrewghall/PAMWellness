@@ -55,6 +55,7 @@ export default function Home() {
           <div className="mt-6 rounded-xl bg-amber-50 p-4 border border-amber-200">
             <h3 className="text-sm font-semibold text-amber-900 mb-3">Leadership Focus Areas:</h3>
             <ul className="space-y-2 text-sm text-amber-800">
+              <li>• Insurer first-contact care model</li>
               <li>• Creating meaningful differentiation from competitors</li>
               <li>• Delivering a more proactive and connected model of care</li>
               <li>• Providing greater visibility and insight for employer clients</li>
