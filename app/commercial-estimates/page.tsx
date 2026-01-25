@@ -431,15 +431,20 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
-        {/* Commercial Estimate */}
+        {/* Year 1 Investment Summary */}
         <section className="card p-6">
-          <h2 className="text-display text-xl mb-4">Commercial Estimate</h2>
+          <h2 className="text-display text-xl mb-4">Year 1 Investment Summary</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-4">
+            The Year 1 commercial model includes Horizon 2 expansion and is structured to keep the total investment just under £300,000.
+          </p>
+          
           <div className="rounded-xl bg-amber-50 p-4 border border-amber-200 mb-4">
             <p className="text-sm text-amber-800">
               <strong>Important:</strong> These are rough order of magnitude estimates and subject to further due diligence to ensure we get the accurate baseline around Horizon deliverables.
             </p>
           </div>
-          <div className="overflow-x-auto">
+
+          <div className="overflow-x-auto mb-6">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-black/10">
@@ -451,9 +456,9 @@ export default function CommercialEstimatesPage() {
                 {[
                   { component: "Discovery workshops", investment: "£12,000" },
                   { component: "Proof of Value (required)", investment: "£20,000" },
-                  { component: "MVP build (depending on POV progression)", investment: "£130,000–£150,000" },
+                  { component: "Horizon 1 — MVP build (post-POV deduction)", investment: "£118,000" },
                   { component: "Annual operate and support", investment: "£100,000" },
-                  { component: "Horizon 2 expansion", investment: "£50,000" }
+                  { component: "Horizon 2 expansion (included)", investment: "£50,000" }
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-black/5">
                     <td className="p-3">{row.component}</td>
@@ -463,6 +468,34 @@ export default function CommercialEstimatesPage() {
               </tbody>
             </table>
           </div>
+
+          <div className="text-center mb-6">
+            <p className="text-2xl font-bold text-[color:var(--accent)]">Total Year 1 Investment: £300,000</p>
+          </div>
+
+          {/* Horizon 1 Cost Clarification */}
+          <div className="rounded-xl bg-blue-50 p-4 border border-blue-200 mb-4">
+            <h3 className="text-sm font-semibold text-blue-900 mb-3">Horizon 1 Cost Clarification</h3>
+            <div className="space-y-2 text-sm text-blue-800">
+              <p><strong>Standard Horizon 1 MVP build value:</strong> £138,000</p>
+              <p><strong>Proof of Value investment:</strong> £20,000</p>
+              <p><strong>POV cost is fully credited against the MVP build</strong></p>
+              <div className="mt-3 p-3 bg-white rounded-lg border border-blue-300">
+                <p className="font-semibold">Effective Horizon 1 build cost:</p>
+                <p className="text-lg font-bold text-blue-700">£138,000 − £20,000 = £118,000</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-emerald-50 p-4 border border-emerald-200">
+            <h3 className="text-sm font-semibold text-emerald-900 mb-3">This ensures:</h3>
+            <ul className="space-y-1 text-sm text-emerald-800">
+              <li>• The full value of Horizon 1 delivery is preserved</li>
+              <li>• No duplication of effort between POV and build</li>
+              <li>• Year‑1 investment remains capped at £300,000</li>
+            </ul>
+          </div>
+
           <div className="mt-6 rounded-xl bg-[color:var(--accent)]/5 p-4 border-l-4 border-[color:var(--accent)]">
             <p className="text-sm text-[color:var(--ink-muted)] font-medium">
               Horizon 3 — Additional scope as required, priced separately once Horizon 2 priorities are known.
