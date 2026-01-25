@@ -198,6 +198,9 @@ export default function CommercialEstimatesPage() {
             Following discovery, we recommend a 10-day Proof of Value (POV) to demonstrate that the proposed platform architecture can operate effectively within the client's existing technology estate.
           </p>
           <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
+            <p className="text-sm text-purple-800 mb-3">
+              <strong>The POV is the first build step towards the MVP.</strong> All work completed during the POV phase will be fully utilized and forms the foundation for the complete MVP delivery.
+            </p>
             <p className="text-sm text-purple-800">
               The POV provides tangible assurance prior to full MVP investment by validating that interfaces, integrations, and workflows function as intended.
             </p>
@@ -247,8 +250,11 @@ export default function CommercialEstimatesPage() {
             ))}
           </div>
           <div className="mt-4 rounded-xl bg-indigo-50 p-4 border border-indigo-200">
-            <p className="text-sm text-indigo-800">
+            <p className="text-sm text-indigo-800 mb-3">
               The POV is not a full MVP, but a functional validation layer designed to prove interoperability.
+            </p>
+            <p className="text-sm text-indigo-800">
+              <strong>All POV deliverables become the foundation for MVP development</strong> - no work is discarded or repeated.
             </p>
           </div>
         </section>
