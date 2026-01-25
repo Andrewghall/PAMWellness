@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAdmin } from './AdminContext';
 
 export default function MobileHeader() {
@@ -14,6 +14,18 @@ export default function MobileHeader() {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobileMenuOpen && !(event.target as Element).closest('.mobile-menu-container')) {
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
 
   const navItems = [
     { href: "/discovery-summary", label: "Discovery summary" },
@@ -42,10 +54,10 @@ export default function MobileHeader() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/50" onClick={closeMobileMenu}>
-          <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-6 border-b border-black/10">
-              <h2 className="text-lg font-semibold text-black">Menu</h2>
+        <div className="lg:hidden fixed top-16 left-0 right-0 z-40 bg-white shadow-lg border-b border-black/10 mobile-menu-container">
+          <div className="max-h-96 overflow-y-auto">
+            <div className="flex items-center justify-between p-4 border-b border-black/10">
+              <h2 className="text-lg font-semibold text-black">Navigation</h2>
               <button
                 onClick={closeMobileMenu}
                 className="p-2 rounded-lg hover:bg-black/5 transition-colors"
@@ -56,7 +68,7 @@ export default function MobileHeader() {
                 </svg>
               </button>
             </div>
-            <nav className="flex flex-col p-6 gap-2">
+            <nav className="flex flex-col p-4 gap-1">
               {navItems.map((item) => (
                 <a 
                   key={item.href} 

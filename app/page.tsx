@@ -55,9 +55,24 @@ export default function Home() {
             technology, and narrative to match the modern market.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm">
-            <span className="pill">Strategic inflection point</span>
-            <span className="pill">Outcome-led demand</span>
-            <span className="pill">AI foundational</span>
+            <a 
+              href="/summary#strategic-inflection-point" 
+              className="pill hover:bg-black/10 transition-colors cursor-pointer"
+            >
+              Strategic inflection point
+            </a>
+            <a 
+              href="/summary#outcome-led-demand" 
+              className="pill hover:bg-black/10 transition-colors cursor-pointer"
+            >
+              Outcome-led demand
+            </a>
+            <a 
+              href="/summary#ai-foundational" 
+              className="pill hover:bg-black/10 transition-colors cursor-pointer"
+            >
+              AI foundational
+            </a>
           </div>
         </section>
 

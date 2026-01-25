@@ -57,7 +57,7 @@ export default function SummaryPage() {
     <div className="min-h-screen px-6 py-10">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
         {/* Hero */}
-        <header className="glass rounded-[32px] p-8">
+        <header id="strategic-inflection-point" className="glass rounded-[32px] p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <p className="pill badge-accent">Summary</p>
@@ -153,7 +153,7 @@ export default function SummaryPage() {
             </section>
 
             {/* Future Principles */}
-            <section className="card p-6">
+            <section id="outcome-led-demand" className="card p-6">
               <h2 className="text-display text-xl">Future-State Principles</h2>
               <p className="mt-2 text-sm text-[color:var(--ink-muted)]">
                 Non-negotiable anchors for all build decisions
@@ -186,7 +186,7 @@ export default function SummaryPage() {
             </section>
 
             {/* Vision Narrative */}
-            <section className="card p-6">
+            <section id="ai-foundational" className="card p-6">
               <h2 className="text-display text-xl">Vision Narrative</h2>
               <div className="mt-4 space-y-4">
                 <div className="rounded-xl border-l-4 border-[color:var(--accent)] bg-[color:var(--accent)]/5 p-4">
