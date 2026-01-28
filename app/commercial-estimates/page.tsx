@@ -25,16 +25,6 @@ export default function CommercialEstimatesPage() {
     const pdf = new jsPDF("p", "mm", "a4");
     
     try {
-      // Add Ethenta logo
-      const logoImg = new Image();
-      logoImg.src = '/ethenta_black_text_teal_dots.png';
-      
-      // Wait for logo to load
-      await new Promise((resolve) => {
-        logoImg.onload = resolve;
-        logoImg.onerror = resolve; // Continue even if logo fails to load
-      });
-      
       // Helper function to add text
       const addText = (text: string, x: number, y: number, fontSize = 12, fontStyle = 'normal') => {
         pdf.setFontSize(fontSize);
@@ -65,10 +55,8 @@ export default function CommercialEstimatesPage() {
       };
       
       // PAGE 1 - Header and Introduction
-      if (logoImg.complete) {
-        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
-      }
-      
+      // Add Ethenta text logo if image fails to load
+      addText('Ethenta', 15, 25, 16, 'bold');
       addText('Application Delivery Proposal', 15, 50, 20, 'bold');
       addText('Building Your New EAP Platform', 15, 60, 16, 'bold');
       
@@ -99,9 +87,8 @@ export default function CommercialEstimatesPage() {
       // PAGE 2 - Delivery Phases
       pdf.addPage();
       
-      if (logoImg.complete) {
-        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
-      }
+      // Add Ethenta text logo
+      addText('Ethenta', 15, 25, 16, 'bold');
       
       addText('Delivery Phases', 15, 50, 16, 'bold');
       addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 60, 10);
@@ -143,9 +130,8 @@ export default function CommercialEstimatesPage() {
       // PAGE 3 - More phases and summary
       pdf.addPage();
       
-      if (logoImg.complete) {
-        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
-      }
+      // Add Ethenta text logo
+      addText('Ethenta', 15, 25, 16, 'bold');
       
       addText('Horizon 1 - MVP Build (continued)', 15, 50, 12, 'bold');
       addText('Delivers a fully operational EAP platform including:', 15, 60, 10);
@@ -193,9 +179,8 @@ export default function CommercialEstimatesPage() {
       // PAGE 4 - Investment Summary
       pdf.addPage();
       
-      if (logoImg.complete) {
-        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
-      }
+      // Add Ethenta text logo
+      addText('Ethenta', 15, 25, 16, 'bold');
       
       addText('Year 1 Investment Summary', 15, 50, 16, 'bold');
       
