@@ -36,7 +36,7 @@ export default function CommercialEstimatesPage() {
       const pageWidth = 210;
       const pageHeight = 297;
       const contentWidth = pageWidth - margin * 2;
-      const headerHeight = 18;
+      const headerHeight = 22;
       const footerHeight = 10;
       const yStart = margin + headerHeight;
       const yEnd = pageHeight - margin - footerHeight;
@@ -56,25 +56,33 @@ export default function CommercialEstimatesPage() {
       let currentPage = 1;
       let y = yStart;
 
+      const headerTitle = "PAM EAS Platform build";
+      const headerDate = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+
       const renderHeader = () => {
         if (logoDataUrl) {
           try {
             pdf.addImage(logoDataUrl, "PNG", margin, margin, 34, 12);
-            return;
           } catch (e) {
             console.error("Logo render failed:", e);
           }
         }
-        setFont(12, "bold");
-        pdf.text("Ethenta", margin, margin + 10);
+
+        const headerTextY = margin + 18;
+
+        setFont(10, "bold");
+        pdf.text(headerTitle, margin, headerTextY);
+
+        setFont(10, "normal");
+        const dateWidth = pdf.getTextWidth(headerDate);
+        pdf.text(headerDate, pageWidth - margin - dateWidth, headerTextY);
       };
 
       const renderFooter = () => {
         setFont(9, "normal");
         const footerY = pageHeight - margin;
         const copyright = "© Ethenta 2026";
-        const cWidth = pdf.getTextWidth(copyright);
-        pdf.text(copyright, (pageWidth - cWidth) / 2, footerY);
+        pdf.text(copyright, margin, footerY);
         const pageLabel = `Page ${currentPage}`;
         const pWidth = pdf.getTextWidth(pageLabel);
         pdf.text(pageLabel, pageWidth - margin - pWidth, footerY);
