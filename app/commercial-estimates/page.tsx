@@ -55,8 +55,9 @@ export default function CommercialEstimatesPage() {
       };
       
       // PAGE 1 - Header and Introduction
-      // Add Ethenta text logo if image fails to load
+      // Add Ethenta text logo with colored dots
       addText('Ethenta', 15, 25, 16, 'bold');
+      addText('•••', 52, 25, 16, 'bold');
       addText('Application Delivery Proposal', 15, 50, 20, 'bold');
       addText('Building Your New EAP Platform', 15, 60, 16, 'bold');
       
@@ -87,8 +88,9 @@ export default function CommercialEstimatesPage() {
       // PAGE 2 - Delivery Phases
       pdf.addPage();
       
-      // Add Ethenta text logo
+      // Add Ethenta text logo with colored dots
       addText('Ethenta', 15, 25, 16, 'bold');
+      addText('•••', 52, 25, 16, 'bold');
       
       addText('Delivery Phases', 15, 50, 16, 'bold');
       addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 60, 10);
@@ -130,8 +132,9 @@ export default function CommercialEstimatesPage() {
       // PAGE 3 - More phases and summary
       pdf.addPage();
       
-      // Add Ethenta text logo
+      // Add Ethenta text logo with colored dots
       addText('Ethenta', 15, 25, 16, 'bold');
+      addText('•••', 52, 25, 16, 'bold');
       
       addText('Horizon 1 - MVP Build (continued)', 15, 50, 12, 'bold');
       addText('Delivers a fully operational EAP platform including:', 15, 60, 10);
@@ -179,8 +182,9 @@ export default function CommercialEstimatesPage() {
       // PAGE 4 - Investment Summary
       pdf.addPage();
       
-      // Add Ethenta text logo
+      // Add Ethenta text logo with colored dots
       addText('Ethenta', 15, 25, 16, 'bold');
+      addText('•••', 52, 25, 16, 'bold');
       
       addText('Year 1 Investment Summary', 15, 50, 16, 'bold');
       
