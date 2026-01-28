@@ -268,23 +268,38 @@ export default function CommercialEstimatesPage() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
                   <span className="text-sm text-emerald-800">1. Discovery & Design Sprint</span>
-                  <span className="font-semibold text-emerald-800">£20,000</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-emerald-800">£20,000</span>
+                    <p className="text-xs text-emerald-600">2 weeks</p>
+                  </div>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
                   <span className="text-sm text-emerald-800">2. Proof of Value (POV)</span>
-                  <span className="font-semibold text-emerald-800">£30,000</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-emerald-800">£30,000</span>
+                    <p className="text-xs text-emerald-600">2 weeks</p>
+                  </div>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
                   <span className="text-sm text-emerald-800">3. MVP Build – Horizon 1</span>
-                  <span className="font-semibold text-emerald-800">£250,000</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-emerald-800">£250,000</span>
+                    <p className="text-xs text-emerald-600">30 weeks</p>
+                  </div>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
                   <span className="text-sm text-emerald-800">4. Horizon 2 – Finalise solution</span>
-                  <span className="font-semibold text-emerald-800">£50,000</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-emerald-800">£50,000</span>
+                    <p className="text-xs text-emerald-600">18 weeks</p>
+                  </div>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">5. Initial operate and support (6 months)</span>
-                  <span className="font-semibold text-emerald-800">£50,000</span>
+                  <span className="text-sm text-emerald-800">5. Operate and run cost</span>
+                  <div className="text-right">
+                    <span className="font-semibold text-emerald-800">£50,000</span>
+                    <p className="text-xs text-emerald-600">Balance of 52 weeks</p>
+                  </div>
                 </div>
               </div>
               
@@ -296,10 +311,11 @@ export default function CommercialEstimatesPage() {
               </div>
               
               <div className="border-t border-emerald-300 pt-3 mt-3">
-                <p className="text-sm font-semibold text-emerald-700">
-                  Ongoing operate cost from go-live:<br/>
-                  <span className="text-lg text-emerald-800">£10,000 per month</span>
-                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold text-emerald-700">Post year 1 - Ongoing operate cost:</span>
+                  <span className="text-lg font-bold text-emerald-800">£10K (per month)</span>
+                </div>
+                <p className="text-xs text-emerald-600 mt-1">Assumes a 3 year agreement.</p>
               </div>
             </div>
           </div>
