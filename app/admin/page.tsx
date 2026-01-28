@@ -229,58 +229,130 @@ export default function AdminDashboard() {
           )}
 
           {activeTab === "access" && (
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="px-6 py-4 border-b border-gray-200 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Access Events</h3>
+            <div className="space-y-6">
+              {/* Unique Visitors Summary */}
+              <div className="bg-white rounded-lg shadow overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-200">
+                  <h3 className="text-lg font-medium text-gray-900">Unique Visitors Summary</h3>
                   <p className="text-sm text-gray-600 mt-1">
-                    Tracks successful access-code entries across the platform and commercial estimates.
+                    Each unique visitor ID represents a different browser/device. Compare locations and access times to identify yourself.
                   </p>
                 </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={resetAccessEvents}
-                    className="rounded-md bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
-                  >
-                    Clear
-                  </button>
-                </div>
-              </div>
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitor</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Path</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {accessEvents.map((ev) => (
-                    <tr key={ev.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        {new Date(ev.ts).toLocaleString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.type}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        {[ev.city, ev.region, ev.country].filter(Boolean).join(", ") || "Unknown"}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        {ev.visitorId?.slice(0, 12) || "-"}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.path || "-"}</td>
-                    </tr>
-                  ))}
-                  {accessEvents.length === 0 && (
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
                     <tr>
-                      <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
-                        No access events yet
-                      </td>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitor ID</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Access Count</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Access</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Access</th>
                     </tr>
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {(() => {
+                      const visitorGroups = accessEvents.reduce((acc, ev) => {
+                        if (!acc[ev.visitorId]) {
+                          acc[ev.visitorId] = {
+                            count: 0,
+                            location: [ev.city, ev.region, ev.country].filter(Boolean).join(", ") || "Unknown",
+                            firstAccess: ev.ts,
+                            lastAccess: ev.ts,
+                            userAgent: ev.userAgent || "Unknown"
+                          };
+                        }
+                        acc[ev.visitorId].count++;
+                        acc[ev.visitorId].firstAccess = Math.min(acc[ev.visitorId].firstAccess, ev.ts);
+                        acc[ev.visitorId].lastAccess = Math.max(acc[ev.visitorId].lastAccess, ev.ts);
+                        return acc;
+                      }, {} as Record<string, { count: number; location: string; firstAccess: number; lastAccess: number; userAgent: string }>);
+
+                      return Object.entries(visitorGroups)
+                        .sort(([, a], [, b]) => b.lastAccess - a.lastAccess)
+                        .map(([visitorId, stats]) => (
+                          <tr key={visitorId}>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">
+                              {visitorId.slice(0, 16)}...
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                              {stats.count}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                              {stats.location}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                              {new Date(stats.firstAccess).toLocaleString()}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                              {new Date(stats.lastAccess).toLocaleString()}
+                            </td>
+                          </tr>
+                        ));
+                    })()}
+                    {accessEvents.length === 0 && (
+                      <tr>
+                        <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                          No access events yet
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* All Access Events */}
+              <div className="bg-white rounded-lg shadow overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-200 flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-900">All Access Events</h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Complete log of all access-code entries.
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={resetAccessEvents}
+                      className="rounded-md bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitor</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Path</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {accessEvents.map((ev) => (
+                      <tr key={ev.id}>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                          {new Date(ev.ts).toLocaleString()}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.type}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                          {[ev.city, ev.region, ev.country].filter(Boolean).join(", ") || "Unknown"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-700">
+                          {ev.visitorId?.slice(0, 12) || "-"}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.path || "-"}</td>
+                      </tr>
+                    ))}
+                    {accessEvents.length === 0 && (
+                      <tr>
+                        <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                          No access events yet
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
 
