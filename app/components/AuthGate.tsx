@@ -27,12 +27,22 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
       sessionStorage.setItem(AUTH_KEY, "true");
       setIsAuthenticated(true);
       setError("");
+      fetch("/api/access-events", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ type: "platform_access", path: window.location.pathname }),
+      }).catch(() => undefined);
     } else if (codeInput === ADMIN_CODE) {
       sessionStorage.setItem(AUTH_KEY, "true");
       sessionStorage.setItem(ADMIN_AUTH_KEY, "true");
       setIsAuthenticated(true);
       setIsAdminAuthenticated(true);
       setError("");
+      fetch("/api/access-events", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ type: "platform_access", path: window.location.pathname }),
+      }).catch(() => undefined);
     } else {
       setError("Invalid access code");
     }

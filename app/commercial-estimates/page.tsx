@@ -17,6 +17,11 @@ export default function CommercialEstimatesPage() {
     if (codeInput === ACCESS_CODE) {
       setIsAuthenticated(true);
       setError("");
+      fetch("/api/access-events", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ type: "commercial_estimates_access", path: "/commercial-estimates" }),
+      }).catch(() => undefined);
     } else {
       setError("Invalid access code");
     }

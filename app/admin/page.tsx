@@ -24,12 +24,25 @@ interface ScrollEvent {
   page: string;
 }
 
+interface AccessEvent {
+  id: string;
+  ts: number;
+  type: "platform_access" | "commercial_estimates_access";
+  path?: string;
+  visitorId: string;
+  country?: string;
+  region?: string;
+  city?: string;
+  userAgent?: string;
+}
+
 export default function AdminDashboard() {
   const { isAdmin } = useAdmin();
   const [pageViews, setPageViews] = useState<PageView[]>([]);
   const [clickEvents, setClickEvents] = useState<ClickEvent[]>([]);
   const [scrollEvents, setScrollEvents] = useState<ScrollEvent[]>([]);
-  const [activeTab, setActiveTab] = useState<"overview" | "pages" | "users" | "interactions">("overview");
+  const [accessEvents, setAccessEvents] = useState<AccessEvent[]>([]);
+  const [activeTab, setActiveTab] = useState<"overview" | "pages" | "users" | "interactions" | "access">("overview");
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -45,10 +58,48 @@ export default function AdminDashboard() {
       setScrollEvents(scrolls);
     };
 
+    const loadAccessEvents = async () => {
+      try {
+        const res = await fetch("/api/access-events?limit=200");
+        if (!res.ok) return;
+        const data = (await res.json()) as { events: AccessEvent[] };
+        setAccessEvents(Array.isArray(data.events) ? data.events : []);
+      } catch {
+        // ignore
+      }
+    };
+
     loadAnalytics();
-    const interval = setInterval(loadAnalytics, 5000); // Refresh every 5 seconds
+    loadAccessEvents();
+    const interval = setInterval(() => {
+      loadAnalytics();
+      loadAccessEvents();
+    }, 5000); // Refresh every 5 seconds
     return () => clearInterval(interval);
   }, [isAdmin]);
+
+  const uniqueAccessVisitors = new Set(accessEvents.map((e) => e.visitorId)).size;
+
+  const resetAccessEvents = async () => {
+    await fetch("/api/access-events/reset", {
+      method: "POST",
+      headers: { "x-carecore-admin": "true" },
+    }).catch(() => undefined);
+    const res = await fetch("/api/access-events?limit=200").catch(() => undefined);
+    if (res && (res as Response).ok) {
+      const data = (await (res as Response).json()) as { events: AccessEvent[] };
+      setAccessEvents(Array.isArray(data.events) ? data.events : []);
+    }
+  };
+
+  const resetLocalAnalytics = () => {
+    localStorage.removeItem("page_views");
+    localStorage.removeItem("click_events");
+    localStorage.removeItem("scroll_events");
+    setPageViews([]);
+    setClickEvents([]);
+    setScrollEvents([]);
+  };
 
   if (!isAdmin) {
     return (
@@ -107,6 +158,7 @@ export default function AdminDashboard() {
                 { id: "pages", label: "Page Analytics" },
                 { id: "users", label: "User Behaviour" },
                 { id: "interactions", label: "Interactions" },
+                { id: "access", label: "Access Events" },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -146,6 +198,89 @@ export default function AdminDashboard() {
                 <p className="text-3xl font-bold text-gray-900 mt-2">{avgScrollDepth}%</p>
                 <p className="text-sm text-gray-600 mt-1">Content engagement</p>
               </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-sm font-medium text-gray-500">Access Events</h3>
+                <p className="text-3xl font-bold text-gray-900 mt-2">{accessEvents.length}</p>
+                <p className="text-sm text-gray-600 mt-1">Tracked logins</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-sm font-medium text-gray-500">Unique Access</h3>
+                <p className="text-3xl font-bold text-gray-900 mt-2">{uniqueAccessVisitors}</p>
+                <p className="text-sm text-gray-600 mt-1">Unique visitors</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-sm font-medium text-gray-500">Reset</h3>
+                <div className="mt-3 flex flex-col gap-2">
+                  <button
+                    onClick={resetAccessEvents}
+                    className="rounded-md bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+                  >
+                    Clear Access Events
+                  </button>
+                  <button
+                    onClick={resetLocalAnalytics}
+                    className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white hover:bg-black"
+                  >
+                    Clear Local Analytics
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "access" && (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-200 flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900">Access Events</h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Tracks successful access-code entries across the platform and commercial estimates.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={resetAccessEvents}
+                    className="rounded-md bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </div>
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitor</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Path</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {accessEvents.map((ev) => (
+                    <tr key={ev.id}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {new Date(ev.ts).toLocaleString()}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.type}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {[ev.city, ev.region, ev.country].filter(Boolean).join(", ") || "Unknown"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {ev.visitorId?.slice(0, 12) || "-"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{ev.path || "-"}</td>
+                    </tr>
+                  ))}
+                  {accessEvents.length === 0 && (
+                    <tr>
+                      <td colSpan={5} className="px-6 py-8 text-center text-gray-500">
+                        No access events yet
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </div>
           )}
 
