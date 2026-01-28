@@ -328,20 +328,6 @@ export default function CommercialEstimatesPage() {
             <li>• A scalable foundation for Horizons 2 and 3</li>
           </ul>
         </section>
-
-        {/* Why this works */}
-        <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Why this works</h2>
-          
-          <ul className="space-y-2 text-sm text-[color:var(--ink-muted)] pl-4">
-            <li>• Clear phased investment</li>
-            <li>• No duplicated effort</li>
-            <li>• Early technical risk removed</li>
-            <li>• Measurable business outcomes</li>
-            <li>• Fast time to value</li>
-            <li>• Built for scale, not replacement later</li>
-          </ul>
-        </section>
       </div>
     </div>
   );
