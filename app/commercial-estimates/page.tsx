@@ -265,42 +265,43 @@ export default function CommercialEstimatesPage() {
             <div className="space-y-4">
               <p className="text-sm font-semibold text-emerald-700">Investment breakdown by phase:</p>
               
-              <div className="space-y-2">
-                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">1. Discovery & Design Sprint</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-emerald-800">£20,000</span>
-                    <p className="text-xs text-emerald-600">2 weeks</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">2. Proof of Value (POV)</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-emerald-800">£30,000</span>
-                    <p className="text-xs text-emerald-600">2 weeks</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">3. MVP Build – Horizon 1</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-emerald-800">£250,000</span>
-                    <p className="text-xs text-emerald-600">30 weeks</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">4. Horizon 2 – Finalise solution</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-emerald-800">£50,000</span>
-                    <p className="text-xs text-emerald-600">18 weeks</p>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">5. Operate and run cost</span>
-                  <div className="text-right">
-                    <span className="font-semibold text-emerald-800">£50,000</span>
-                    <p className="text-xs text-emerald-600">Balance of 52 weeks</p>
-                  </div>
-                </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-emerald-200">
+                      <th className="text-left py-2 font-semibold text-emerald-800">Phase</th>
+                      <th className="text-right py-2 font-semibold text-emerald-800">Investment</th>
+                      <th className="text-right py-2 font-semibold text-emerald-800">TIME FRAMES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-emerald-100">
+                      <td className="py-2 text-emerald-800">1. Discovery & Design Sprint</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">£20,000</td>
+                      <td className="py-2 text-right text-emerald-600">2 weeks</td>
+                    </tr>
+                    <tr className="border-b border-emerald-100">
+                      <td className="py-2 text-emerald-800">2. Proof of Value (POV)</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">£30,000</td>
+                      <td className="py-2 text-right text-emerald-600">2 weeks</td>
+                    </tr>
+                    <tr className="border-b border-emerald-100">
+                      <td className="py-2 text-emerald-800">3. MVP Build – Horizon 1</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">£250,000</td>
+                      <td className="py-2 text-right text-emerald-600">30 weeks</td>
+                    </tr>
+                    <tr className="border-b border-emerald-100">
+                      <td className="py-2 text-emerald-800">4. Horizon 2 – Finalise solution</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">£50,000</td>
+                      <td className="py-2 text-right text-emerald-600">18 weeks</td>
+                    </tr>
+                    <tr className="border-b border-emerald-100">
+                      <td className="py-2 text-emerald-800">5. Operate and run cost</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">£50,000</td>
+                      <td className="py-2 text-right text-emerald-600">Balance of 52 weeks</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               
               <div className="border-t border-emerald-300 pt-4 mt-4">
