@@ -261,6 +261,7 @@ export default function CommercialEstimatesPage() {
               <li>• Additional system integrations</li>
               <li>• Experience optimisation</li>
               <li>• Quality framework implementation</li>
+              <li>• Quality framework</li>
             </ul>
             
             <div className="rounded-xl bg-blue-50 p-3 border border-blue-200">
