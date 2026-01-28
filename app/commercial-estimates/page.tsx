@@ -42,6 +42,19 @@ export default function CommercialEstimatesPage() {
         pdf.text(text, x, y);
       };
       
+      // Helper function to add footer
+      const addFooter = (pageNumber: number) => {
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        const copyright = '© Ethenta 2026';
+        const copyrightWidth = pdf.getTextWidth(copyright);
+        const copyrightX = (210 - copyrightWidth) / 2;
+        pdf.text(copyright, copyrightX, 285);
+        
+        // Add page number
+        pdf.text(`Page ${pageNumber}`, 195, 285);
+      };
+      
       // Helper function to add centered text
       const addCenteredText = (text: string, y: number, fontSize = 12, fontStyle = 'normal') => {
         pdf.setFontSize(fontSize);
@@ -79,6 +92,9 @@ export default function CommercialEstimatesPage() {
       addText('• Reduced operational friction', 25, 167, 10);
       addText('• Improved clinical oversight', 25, 174, 10);
       addText('• Clear performance visibility', 25, 181, 10);
+      
+      // Add footer to page 1
+      addFooter(1);
       
       // PAGE 2 - Delivery Phases
       pdf.addPage();
@@ -120,6 +136,9 @@ export default function CommercialEstimatesPage() {
       // Phase 3
       addText('3. Horizon 1 - MVP Build', 15, 256, 12, 'bold');
       addText('£250,000', 150, 256, 10, 'bold');
+      
+      // Add footer to page 2
+      addFooter(2);
       
       // PAGE 3 - More phases and summary
       pdf.addPage();
@@ -167,6 +186,9 @@ export default function CommercialEstimatesPage() {
       addText('£10,000 per month | from go-live', 150, 256, 10, 'bold');
       addText('• Platform operation and support', 20, 264, 9);
       addText('• Monitoring and service assurance', 20, 271, 9);
+      
+      // Add footer to page 3
+      addFooter(3);
       
       // PAGE 4 - Investment Summary
       pdf.addPage();
@@ -225,13 +247,16 @@ export default function CommercialEstimatesPage() {
       
       // What PAM Wellness Gets
       addText('What PAM Wellness Gets', 15, 225, 14, 'bold');
-      addText('By the end of Horizon 1, PAM Wellness will have:', 15, 235, 10);
-      addText('• A single operational digital care platform', 20, 243, 9);
-      addText('• Fully supported patient and clinician journeys', 20, 250, 9);
-      addText('• Reduced administrative burden', 20, 257, 9);
-      addText('• Improved experience and responsiveness', 20, 264, 9);
-      addText('• Real-time operational and quality visibility', 20, 271, 9);
-      addText('• A scalable foundation for Horizons 2 and 3', 20, 278, 9);
+      addText('At the end of the full delivery programme, PAM Wellness will have:', 15, 235, 10);
+      addText('• A single, unified digital care platform across all services', 20, 243, 9);
+      addText('• Fully designed and supported patient, clinician, and operational journeys', 20, 250, 9);
+      addText('• Reduced administrative effort through automation and intelligent workflows', 20, 257, 9);
+      addText('• Faster, more consistent and higher-quality care delivery', 20, 264, 9);
+      addText('• Real-time visibility of operational performance, quality, demand, and outcomes', 20, 271, 9);
+      addText('• A scalable, modular platform supporting continuous enhancement, new services, and future growth', 20, 278, 9);
+      
+      // Add footer to page 4
+      addFooter(4);
       
       pdf.save("PAM-Wellness-Commercial-Proposal.pdf");
     } catch (error) {
