@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import jsPDF from "jspdf";
-import ethentaLogo from "../../public/ethenta_black_text_teal_dots.png";
 
 const ACCESS_CODE = "PAM2026";
 
@@ -45,7 +44,7 @@ export default function CommercialEstimatesPage() {
       const fontFamily = "helvetica";
 
       const loadPngDataUrl = async (src: string): Promise<string> => {
-        const res = await fetch(src);
+        const res = await fetch(src, { cache: "force-cache" });
         if (!res.ok) throw new Error(`Failed to fetch logo: ${res.status}`);
         const blob = await res.blob();
         return await new Promise<string>((resolve, reject) => {
@@ -56,7 +55,22 @@ export default function CommercialEstimatesPage() {
         });
       };
 
-      const logoDataUrl = await loadPngDataUrl((ethentaLogo as any).src ?? (ethentaLogo as any));
+      let logoDataUrl: string | null = null;
+      const logoPath = "/ethenta_black_text_teal_dots.png";
+      const origin = typeof window !== "undefined" ? window.location.origin : "";
+      const candidates = [
+        `${origin}${logoPath}`,
+        logoPath,
+      ].filter(Boolean);
+
+      for (const candidate of candidates) {
+        try {
+          logoDataUrl = await loadPngDataUrl(candidate);
+          break;
+        } catch (e) {
+          console.error("Logo fetch failed:", candidate, e);
+        }
+      }
 
       const setFont = (size: number, style: "normal" | "bold" = "normal") => {
         pdf.setFont(fontFamily, style);
@@ -69,12 +83,16 @@ export default function CommercialEstimatesPage() {
       let y = yStart;
 
       const renderHeader = () => {
-        try {
-          pdf.addImage(logoDataUrl, "PNG", margin, margin, 40, 14);
-        } catch {
-          setFont(12, "bold");
-          pdf.text("Ethenta", margin, margin + 10);
+        if (logoDataUrl) {
+          try {
+            pdf.addImage(logoDataUrl, "PNG", margin, margin, 40, 14);
+            return;
+          } catch (e) {
+            console.error("Logo render failed:", e);
+          }
         }
+        setFont(12, "bold");
+        pdf.text("Ethenta", margin, margin + 10);
       };
 
       const renderFooter = () => {
