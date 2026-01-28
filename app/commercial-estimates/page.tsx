@@ -227,12 +227,6 @@ export default function CommercialEstimatesPage() {
               <li>• Quality framework implementation</li>
               <li>• Quality framework</li>
             </ul>
-            
-            <div className="rounded-xl bg-blue-50 p-3 border border-blue-200">
-              <p className="text-xs text-blue-700">
-                Horizon 2 is optional and only initiated once Horizon 1 is live.
-              </p>
-            </div>
           </div>
 
           {/* Phase 5 */}
