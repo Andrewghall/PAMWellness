@@ -155,16 +155,11 @@ export default function CommercialEstimatesPage() {
       renderHeader();
 
       // PAGE 1 - Cover and Executive Summary
-      setFont(22, "bold");
-      const title = "Application Delivery Proposal";
-      const titleWidth = pdf.getTextWidth(title);
-      pdf.text(title, (pageWidth - titleWidth) / 2, y);
-      y += 9;
-      setFont(15, "normal");
+      setFont(18, "bold");
       const subtitle = "Building Your New EAP Platform";
       const subtitleWidth = pdf.getTextWidth(subtitle);
       pdf.text(subtitle, (pageWidth - subtitleWidth) / 2, y);
-      y += 12;
+      y += 14;
 
       setFont(11, "normal");
       const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
