@@ -25,16 +25,21 @@ export default function CommercialEstimatesPage() {
     const pdf = new jsPDF("p", "mm", "a4");
     
     try {
-      // Helper function to add text
-      const addText = (text: string, x: number, y: number, fontSize = 12, fontStyle = 'normal') => {
+      // Set margins: 25mm on all sides
+      const margin = 25;
+      const contentWidth = 210 - (margin * 2);
+      const contentHeight = 297 - (margin * 2);
+      
+      // Helper function to add text with proper positioning
+      const addText = (text: string, x: number, y: number, fontSize = 11, fontStyle = 'normal') => {
         pdf.setFontSize(fontSize);
         pdf.setFont('helvetica', fontStyle as any);
-        pdf.text(text, x, y);
+        pdf.text(text, margin + x, margin + y);
       };
       
       // Helper function to add footer
       const addFooter = (pageNumber: number) => {
-        pdf.setFontSize(8);
+        pdf.setFontSize(9);
         pdf.setFont('helvetica', 'normal');
         const copyright = '© Ethenta 2026';
         const copyrightWidth = pdf.getTextWidth(copyright);
@@ -42,16 +47,7 @@ export default function CommercialEstimatesPage() {
         pdf.text(copyright, copyrightX, 285);
         
         // Add page number
-        pdf.text(`Page ${pageNumber}`, 195, 285);
-      };
-      
-      // Helper function to add centered text
-      const addCenteredText = (text: string, y: number, fontSize = 12, fontStyle = 'normal') => {
-        pdf.setFontSize(fontSize);
-        pdf.setFont('helvetica', fontStyle as any);
-        const textWidth = pdf.getTextWidth(text);
-        const x = (210 - textWidth) / 2;
-        pdf.text(text, x, y);
+        pdf.text(`${pageNumber}`, 195, 285);
       };
       
       // Helper function to add logo to page
@@ -68,152 +64,178 @@ export default function CommercialEstimatesPage() {
             img.src = '/ethenta_black_text_teal_dots.png';
           });
           
-          // Add logo to PDF - larger and better positioned
-          pdf.addImage(img, 'PNG', 15, 15, 50, 18);
+          // Add logo to PDF - top-left, max 40mm width
+          pdf.addImage(img, 'PNG', margin, margin, 40, 14);
         } catch (error) {
           // Fallback to text if image fails
-          addText('Ethenta •••', 15, 25, 18, 'bold');
+          addText('Ethenta', 0, 5, 12, 'bold');
         }
       };
       
       // PAGE 1 - Header and Introduction
       await addLogo();
       
-      // Add a nice header line
-      pdf.setDrawColor(0, 128, 128);
-      pdf.setLineWidth(0.5);
-      pdf.line(15, 40, 195, 40);
+      // Document title
+      addText('Application Delivery Proposal', 0, 25, 24, 'bold');
       
-      addCenteredText('Application Delivery Proposal', 22, 24, 'bold');
-      addCenteredText('Building Your New EAP Platform', 32, 16, 'normal');
-      
-      // Date and quote details in a nice box
-      pdf.setDrawColor(200, 200, 200);
-      pdf.setFillColor(245, 245, 245);
-      pdf.roundedRect(15, 50, 180, 20, 2, 2, 'FD');
+      // Date and reference
       const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-      addText(`Date: ${today}`, 25, 58, 10, 'normal');
-      addText('Quote Reference: PAM-EAP-2026-001', 25, 65, 10, 'normal');
+      addText(`Date: ${today}`, 0, 45, 11, 'normal');
+      addText('Reference: PAM-EAP-2026-001', 0, 52, 11, 'normal');
       
-      // What this delivers - better spacing
-      addText('What this delivers', 15, 85, 18, 'bold');
-      pdf.setDrawColor(200, 200, 200);
-      pdf.line(15, 90, 195, 90);
+      // Section 1: Executive Summary
+      addText('Executive Summary', 0, 75, 16, 'bold');
+      addText('This proposal outlines the delivery of a modern EAP platform for PAM Wellness.', 0, 85, 11, 'normal');
       
-      addText('A modern, scalable EAP platform that becomes the single operational front door for', 15, 100, 11, 'normal');
-      addText('patients, clinicians, corporate users and leadership — replacing fragmented systems', 15, 107, 11, 'normal');
-      addText('with one joined-up experience.', 15, 114, 11, 'normal');
+      // What this delivers
+      addText('Platform Overview', 0, 105, 16, 'bold');
+      addText('A modern, scalable EAP platform that becomes the single operational front door for patients, clinicians, corporate users and leadership, replacing fragmented systems with one joined-up experience.', 0, 115, 11, 'normal');
       
-      // Benefits box - nicer design
-      pdf.setDrawColor(0, 150, 0);
-      pdf.setFillColor(240, 255, 240);
-      pdf.roundedRect(15, 125, 180, 50, 5, 5, 'FD');
-      addText('This approach provides:', 25, 140, 14, 'bold');
-      addText('✓ Faster access to care', 30, 150, 11, 'normal');
-      addText('✓ Reduced operational friction', 30, 158, 11, 'normal');
-      addText('✓ Improved clinical oversight', 30, 166, 11, 'normal');
-      addText('✓ Clear performance visibility', 30, 174, 11, 'normal');
-      addText('✓ A scalable foundation for automation and AI', 30, 182, 11, 'normal');
+      // Key benefits
+      addText('Key Benefits', 0, 135, 16, 'bold');
+      const benefits = [
+        'Faster access to care',
+        'Reduced operational friction',
+        'Improved clinical oversight',
+        'Clear performance visibility',
+        'Scalable foundation for automation',
+        'Single source of truth for operations'
+      ];
+      
+      let yPos = 145;
+      benefits.forEach(benefit => {
+        addText(`• ${benefit}`, 5, yPos, 11, 'normal');
+        yPos += 14;
+      });
       
       // Add footer to page 1
       addFooter(1);
       
-      // PAGE 2 - Delivery Phases
+      // PAGE 2 - Delivery Approach
       pdf.addPage();
       await addLogo();
       
-      // Add header line
-      pdf.setDrawColor(0, 128, 128);
-      pdf.setLineWidth(0.5);
-      pdf.line(15, 40, 195, 40);
+      addText('Delivery Approach', 0, 25, 16, 'bold');
+      addText('Delivery is structured into clear phases to ensure speed to value, controlled investment, and low delivery risk.', 0, 35, 11, 'normal');
       
-      addText('Delivery Phases', 15, 50, 18, 'bold');
-      pdf.setDrawColor(200, 200, 200);
-      pdf.line(15, 55, 195, 55);
+      // Phase 1
+      addText('Phase 1: Discovery & Design Sprint', 0, 55, 14, 'bold');
+      addText('Purpose: Remove ambiguity early and confirm technical approach.', 0, 65, 11, 'normal');
+      addText('Investment: £20,000 | Duration: 10 days', 0, 75, 11, 'normal');
       
-      addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 65, 11, 'normal');
-      addText('investment, and low delivery risk.', 15, 72, 11, 'normal');
+      const phase1Outcomes = [
+        'Agreed future-state journeys',
+        'Defined roles and governance',
+        'Confirmed KPIs and success measures',
+        'Finalised MVP scope and roadmap'
+      ];
       
-      // Phase boxes with better design
-      pdf.setDrawColor(100, 100, 200);
-      pdf.setFillColor(245, 245, 255);
-      pdf.roundedRect(15, 80, 180, 75, 3, 3, 'FD');
-      addText('1. Discovery & Design Sprint', 25, 90, 14, 'bold');
-      addText('£20,000 | 10 days', 160, 90, 11, 'bold');
-      pdf.setDrawColor(150, 150, 200);
-      pdf.line(25, 95, 175, 95);
-      addText('Purpose:', 25, 103, 11, 'bold');
-      addText('• Remove ambiguity early', 30, 111, 10, 'normal');
-      addText('• Confirm operating model and journeys', 30, 118, 10, 'normal');
-      addText('• Lock MVP scope and roadmap', 30, 125, 10, 'normal');
-      addText('Key outcomes:', 25, 133, 11, 'bold');
-      addText('• Agreed future-state journeys', 30, 141, 10, 'normal');
-      addText('• Confirmed KPIs and success measures', 30, 155, 10, 'normal');
-      addText('• Finalised MVP and Horizon roadmap', 30, 162, 10, 'normal');
+      yPos = 85;
+      addText('Key Outcomes:', 0, yPos, 11, 'bold');
+      yPos += 10;
+      phase1Outcomes.forEach(outcome => {
+        addText(`• ${outcome}`, 5, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
-      // Phase 2 box
-      pdf.setDrawColor(200, 100, 100);
-      pdf.setFillColor(255, 245, 245);
-      pdf.roundedRect(15, 170, 180, 85, 3, 3, 'FD');
-      addText('2. Proof of Value (POV)', 25, 180, 14, 'bold');
-      addText('£30,000 | Required', 160, 180, 11, 'bold');
-      pdf.setDrawColor(200, 150, 150);
-      pdf.line(25, 185, 175, 185);
-      addText('Purpose:', 25, 193, 11, 'bold');
-      addText('• Prove integrations and workflows in the live estate', 30, 201, 10, 'normal');
-      addText('• De-risk the MVP before full build investment', 30, 208, 10, 'normal');
-      addText('What is validated:', 25, 216, 11, 'bold');
-      addText('• RingCentral integration', 30, 224, 10, 'normal');
-      addText('• Existing portal coexistence or migration', 30, 231, 10, 'normal');
-      addText('• Secure data exchange', 30, 238, 10, 'normal');
-      addText('• End-to-end journey execution', 30, 245, 10, 'normal');
+      // Phase 2
+      addText('Phase 2: Proof of Value', 0, yPos + 5, 14, 'bold');
+      addText('Purpose: Prove integrations and workflows in the live estate.', 0, yPos + 15, 11, 'normal');
+      addText('Investment: £30,000 | Status: Required', 0, yPos + 25, 11, 'normal');
+      
+      const phase2Validations = [
+        'RingCentral integration',
+        'Portal coexistence approach',
+        'Secure data exchange',
+        'End-to-end journey execution',
+        'Buddy workflows validation'
+      ];
+      
+      yPos = yPos + 35;
+      addText('Validated Components:', 0, yPos, 11, 'bold');
+      yPos += 10;
+      phase2Validations.forEach(validation => {
+        addText(`• ${validation}`, 5, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
       // Add footer to page 2
       addFooter(2);
       
-      // PAGE 3 - More phases and summary
+      // PAGE 3 - Implementation Phases
       pdf.addPage();
       await addLogo();
       
-      addText('Horizon 1 - MVP Build (continued)', 15, 50, 12, 'bold');
-      addText('Delivers a fully operational EAP platform including:', 15, 60, 10);
-      addText('• Single digital care portal', 20, 68, 9);
-      addText('• Live patient journeys', 20, 75, 9);
-      addText('• Live clinician journeys', 20, 82, 9);
-      addText('• Patient Buddy for proactive and reactive engagement', 20, 89, 9);
-      addText('• Clinician Buddy for workload management and escalation', 20, 96, 9);
-      addText('• RingCentral-aligned communications', 20, 103, 9);
-      addText('• Executive KPI dashboards', 20, 110, 9);
-      addText('• Standardised SOPs and governance', 20, 117, 9);
+      addText('Implementation Phases', 0, 25, 16, 'bold');
+      addText('Core platform build and scaling phases following successful validation.', 0, 35, 11, 'normal');
       
-      // Outcome box
-      pdf.setDrawColor(0, 128, 0);
-      pdf.setFillColor(240, 255, 240);
-      pdf.roundedRect(15, 125, 180, 30, 3, 3, 'FD');
-      addText('Outcome:', 20, 135, 11, 'bold');
-      addText('• One platform', 25, 143, 9);
-      addText('• One operating model', 25, 150, 9);
-      addText('• One source of truth', 25, 157, 9);
+      // Phase 3
+      addText('Phase 3: Horizon 1 - MVP Build', 0, 55, 14, 'bold');
+      addText('Purpose: Deliver fully operational EAP platform with core functionality.', 0, 65, 11, 'normal');
+      addText('Investment: £250,000 | Duration: 12-15 weeks', 0, 75, 11, 'normal');
+      
+      const mvpFeatures = [
+        'Single digital care portal',
+        'Live patient and clinician journeys',
+        'Patient Buddy for engagement',
+        'Clinician Buddy for workload management',
+        'RingCentral communications integration',
+        'Executive KPI dashboards',
+        'Standardised SOPs and governance'
+      ];
+      
+      yPos = 85;
+      addText('Platform Features:', 0, yPos, 11, 'bold');
+      yPos += 10;
+      mvpFeatures.forEach(feature => {
+        addText(`• ${feature}`, 5, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
       // Phase 4
-      addText('4. Horizon 2 – Scaling the Platform', 15, 170, 12, 'bold');
-      addText('£50,000', 150, 170, 10, 'bold');
-      addText('Horizon 2 scales the platform across the organisation:', 15, 180, 10);
-      addText('All required journeys & workflows, full rollout, optimisation and stabilisation', 15, 187, 10, 'bold');
-      addText('• Complete rollout of all required patient and clinician journeys', 20, 195, 9);
-      addText('• Full workflow automation and optimisation', 20, 202, 9);
-      addText('• Platform stabilisation and performance tuning', 20, 209, 9);
-      addText('• Extended automation across all care pathways', 20, 216, 9);
-      addText('• Deeper insight and advanced reporting capabilities', 20, 223, 9);
-      addText('• Additional system integrations for complete coverage', 20, 230, 9);
-      addText('• User experience optimisation based on feedback', 20, 237, 9);
-      addText('• Quality framework implementation and governance', 20, 244, 9);
+      addText('Phase 4: Horizon 2 - Platform Scaling', 0, yPos + 5, 14, 'bold');
+      addText('Purpose: Scale platform across organisation with full rollout and optimisation.', 0, yPos + 15, 11, 'normal');
+      addText('Investment: £50,000 | Duration: 12 weeks', 0, yPos + 25, 11, 'normal');
+      
+      const scalingActivities = [
+        'Complete rollout of all required journeys',
+        'Full workflow automation and optimisation',
+        'Platform stabilisation and performance tuning',
+        'Extended automation across care pathways',
+        'Advanced reporting and insights',
+        'Additional system integrations',
+        'User experience optimisation',
+        'Quality framework implementation'
+      ];
+      
+      yPos = yPos + 35;
+      addText('Scaling Activities:', 0, yPos, 11, 'bold');
+      yPos += 10;
+      scalingActivities.forEach(activity => {
+        addText(`• ${activity}`, 5, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
       // Phase 5
-      addText('5. Operate, Refine & Upgrade', 15, 256, 12, 'bold');
-      addText('£10,000 per month | from go-live', 150, 256, 10, 'bold');
-      addText('• Platform operation and support', 20, 264, 9);
-      addText('• Monitoring and service assurance', 20, 271, 9);
+      addText('Phase 5: Operations & Enhancement', 0, yPos + 5, 14, 'bold');
+      addText('Purpose: Ongoing platform operation, support and continuous improvement.', 0, yPos + 15, 11, 'normal');
+      addText('Investment: £10,000 per month | Start: From go-live', 0, yPos + 25, 11, 'normal');
+      
+      const operationsServices = [
+        'Platform operation and support',
+        'Monitoring and service assurance',
+        'Performance optimisation',
+        'Minor enhancements and updates',
+        'Stability and release management'
+      ];
+      
+      yPos = yPos + 35;
+      addText('Operational Services:', 0, yPos, 11, 'bold');
+      yPos += 10;
+      operationsServices.forEach(service => {
+        addText(`• ${service}`, 5, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
       // Add footer to page 3
       addFooter(3);
@@ -222,63 +244,54 @@ export default function CommercialEstimatesPage() {
       pdf.addPage();
       await addLogo();
       
-      addText('Year 1 Investment Summary', 15, 50, 16, 'bold');
+      addText('Investment Summary', 0, 25, 16, 'bold');
+      addText('Total investment required for full platform delivery and first year operations.', 0, 35, 11, 'normal');
       
-      // Investment summary box
-      pdf.setDrawColor(0, 128, 0);
-      pdf.setFillColor(240, 255, 240);
-      pdf.roundedRect(15, 60, 180, 35, 3, 3, 'FD');
-      addCenteredText('Total first-year investment:', 75, 11, 'bold');
-      addCenteredText('£400,000', 85, 18, 'bold');
+      // Investment total
+      addText('Total First-Year Investment: £400,000', 0, 55, 14, 'bold');
       
       // Investment breakdown
-      addText('Investment breakdown by phase:', 15, 105, 11, 'bold');
+      addText('Investment Breakdown', 0, 75, 14, 'bold');
       
-      // Table headers
-      addText('Phase', 15, 120, 10, 'bold');
-      addText('Investment', 120, 120, 10, 'bold');
-      addText('Time Frames', 160, 120, 10, 'bold');
+      const investments = [
+        ['Phase 1: Discovery & Design Sprint', '£20,000', '2 weeks'],
+        ['Phase 2: Proof of Value', '£30,000', '2 weeks'],
+        ['Phase 3: Horizon 1 - MVP Build', '£250,000', '12-15 weeks'],
+        ['Phase 4: Horizon 2 - Platform Scaling', '£50,000', '12 weeks'],
+        ['Phase 5: Operations (first year)', '~£50,000', '52 weeks balance']
+      ];
       
-      // Table rows
-      addText('1. Discovery & Design Sprint', 15, 130, 9);
-      addText('£20,000', 120, 130, 9);
-      addText('2 weeks', 160, 130, 9);
+      yPos = 85;
+      investments.forEach(investment => {
+        addText(`${investment[0]}`, 0, yPos, 11, 'normal');
+        addText(`${investment[1]}`, 120, yPos, 11, 'bold');
+        addText(`${investment[2]}`, 150, yPos, 11, 'normal');
+        yPos += 12;
+      });
       
-      addText('2. Proof of Value (POV)', 15, 138, 9);
-      addText('£30,000', 120, 138, 9);
-      addText('2 weeks', 160, 138, 9);
+      // Ongoing costs
+      addText('Ongoing Operational Costs', 0, yPos + 10, 14, 'bold');
+      addText('Post Year 1: £10,000 per month', 0, yPos + 20, 11, 'bold');
+      addText('Assumes 3-year service agreement.', 0, yPos + 30, 11, 'normal');
       
-      addText('3. Horizon 1 - MVP Build', 15, 146, 9);
-      addText('£250,000', 120, 146, 9);
-      addText('12-15 weeks', 160, 146, 9);
+      // Client outcomes
+      addText('Client Outcomes', 0, yPos + 50, 16, 'bold');
+      addText('At the end of the full delivery programme, PAM Wellness will have:', 0, yPos + 60, 11, 'normal');
       
-      addText('4. Horizon 2 – Scaling the Platform', 15, 154, 9);
-      addText('£50,000', 120, 154, 9);
-      addText('12 weeks', 160, 154, 9);
+      const outcomes = [
+        'A single, unified digital care platform across all services',
+        'Fully designed and supported patient, clinician, and operational journeys',
+        'Reduced administrative effort through automation and intelligent workflows',
+        'Faster, more consistent and higher-quality care delivery',
+        'Real-time visibility of operational performance, quality, demand, and outcomes',
+        'A scalable, modular platform supporting continuous enhancement, new services, and future growth'
+      ];
       
-      addText('5. Operate and run cost (£10K per month)', 15, 162, 9);
-      addText('~£50,000', 120, 162, 9);
-      addText('Balance of 52 weeks', 160, 162, 9);
-      
-      // Totals
-      pdf.line(15, 170, 195, 170);
-      addText('Total Year 1 Investment:', 15, 180, 11, 'bold');
-      addText('£400,000', 120, 180, 11, 'bold');
-      
-      pdf.line(15, 190, 195, 190);
-      addText('Post year 1 - Ongoing operate cost:', 15, 200, 11, 'bold');
-      addText('£10K (per month)', 120, 200, 11, 'bold');
-      addText('Assumes a 3 year agreement.', 15, 208, 9);
-      
-      // What PAM Wellness Gets
-      addText('What PAM Wellness Gets', 15, 225, 14, 'bold');
-      addText('At the end of the full delivery programme, PAM Wellness will have:', 15, 235, 10);
-      addText('• A single, unified digital care platform across all services', 20, 243, 9);
-      addText('• Fully designed and supported patient, clinician, and operational journeys', 20, 250, 9);
-      addText('• Reduced administrative effort through automation and intelligent workflows', 20, 257, 9);
-      addText('• Faster, more consistent and higher-quality care delivery', 20, 264, 9);
-      addText('• Real-time visibility of operational performance, quality, demand, and outcomes', 20, 271, 9);
-      addText('• A scalable, modular platform supporting continuous enhancement, new services, and future growth', 20, 278, 9);
+      yPos = yPos + 70;
+      outcomes.forEach(outcome => {
+        addText(`• ${outcome}`, 5, yPos, 11, 'normal');
+        yPos += 14;
+      });
       
       // Add footer to page 4
       addFooter(4);
@@ -614,16 +627,16 @@ export default function CommercialEstimatesPage() {
           <h2 className="text-display text-2xl mb-4">What PAM Wellness Gets</h2>
           
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            By the end of Horizon 1, PAM Wellness will have:
+            At the end of the full delivery programme, PAM Wellness will have:
           </p>
           
           <ul className="space-y-2 text-sm text-[color:var(--ink-muted)] pl-4">
-            <li>• A single operational digital care platform</li>
-            <li>• Fully supported patient and clinician journeys</li>
-            <li>• Reduced administrative burden</li>
-            <li>• Improved experience and responsiveness</li>
-            <li>• Real-time operational and quality visibility</li>
-            <li>• A scalable foundation for Horizons 2 and 3</li>
+            <li>• A single, unified digital care platform across all services</li>
+            <li>• Fully designed and supported patient, clinician, and operational journeys</li>
+            <li>• Reduced administrative effort through automation and intelligent workflows</li>
+            <li>• Faster, more consistent and higher-quality care delivery</li>
+            <li>• Real-time visibility of operational performance, quality, demand, and outcomes</li>
+            <li>• A scalable, modular platform supporting continuous enhancement, new services, and future growth</li>
           </ul>
         </section>
       </div>
