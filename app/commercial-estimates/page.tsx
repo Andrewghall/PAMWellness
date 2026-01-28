@@ -367,13 +367,6 @@ export default function CommercialEstimatesPage() {
                 Building Your New EAP Platform
               </h1>
             </div>
-            <button
-              onClick={handleDownloadQuote}
-              className="rounded-lg bg-[color:var(--accent)] px-4 py-2 text-xs font-medium text-white transition-all hover:bg-[color:var(--accent)]/90 flex items-center gap-1"
-            >
-              <span>📄</span>
-              Download Quote
-            </button>
           </div>
         </header>
 
