@@ -101,11 +101,44 @@ export default function CommercialEstimatesPage() {
             Our delivery approach is structured into five distinct phases, each delivering specific value and building upon the previous work. This phased approach ensures controlled investment, measurable outcomes, and continuous value delivery.
           </p>
           
+          {/* 2026 Cost Estimate */}
+          <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 p-6 mb-6">
+            <h3 className="text-display text-lg mb-4 text-emerald-800">2026 Estimated Cost Summary</h3>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <p className="text-sm font-semibold text-emerald-700 mb-2">First 12 Months Total:</p>
+                <p className="text-2xl font-bold text-emerald-800">£400,000</p>
+                <p className="text-xs text-emerald-600 mt-1">Assuming 30-week build and 22-week run period</p>
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-emerald-700">Build Phase:</span>
+                  <span className="font-semibold text-emerald-800">£350,000</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-emerald-700">Run Phase (22 weeks):</span>
+                  <span className="font-semibold text-emerald-800">£50,000</span>
+                </div>
+                <div className="border-t border-emerald-300 pt-2 mt-2">
+                  <div className="flex justify-between text-sm font-semibold">
+                    <span className="text-emerald-800">Total First Year:</span>
+                    <span className="text-emerald-800">£400,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 rounded-lg bg-emerald-100 p-3">
+              <p className="text-xs text-emerald-700">
+                <strong>Ongoing Cost:</strong> £10,000 per month for minimum 3 years after go-live
+              </p>
+            </div>
+          </div>
+          
           <div className="space-y-4">
             {[
               {
                 phase: "1. Discovery and Design Sprint",
-                price: "£12K - £20K (1 to 2 weeks)",
+                price: "£20K (10 days)",
                 delivers: "Comprehensive requirement gathering, solution architecture, and detailed MVP definition with clear delivery roadmap"
               },
               {
@@ -115,7 +148,7 @@ export default function CommercialEstimatesPage() {
               },
               {
                 phase: "3. MVP (Horizon 1)",
-                price: "£200K",
+                price: "£250K",
                 delivers: "Production-ready platform with full user workflows, secure access, role-based permissions, and operational dashboards"
               },
               {
@@ -147,7 +180,7 @@ export default function CommercialEstimatesPage() {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
             <h2 className="text-display text-2xl">Phase 1 — Discovery & Design Sprint</h2>
             <span className="rounded-full bg-amber-600 px-4 py-2 text-sm font-medium text-white">
-              £12K - £20K (1 to 2 weeks)
+              £20K (10 days)
             </span>
           </div>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
@@ -549,7 +582,7 @@ export default function CommercialEstimatesPage() {
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
               <h3 className="text-display text-lg">Phase 3 — Horizon 1: MVP Build</h3>
               <span className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white">
-                £200K
+                £250K
               </span>
             </div>
             <p className="text-sm text-purple-600 mb-3 font-medium">Build value: £138,000 • Net payable after POV credit: £118,000</p>
@@ -651,9 +684,9 @@ export default function CommercialEstimatesPage() {
               </thead>
               <tbody>
                 {[
-                  { component: "Discovery workshops", investment: "£12,000 - £20,000" },
+                  { component: "Discovery workshops", investment: "£20,000" },
                   { component: "Proof of Value (required)", investment: "£30,000" },
-                  { component: "Horizon 1 — MVP build", investment: "£200,000" },
+                  { component: "Horizon 1 — MVP build", investment: "£250,000" },
                   { component: "Horizon 2 expansion", investment: "£50,000" },
                   { component: "Annual operate and support", investment: "£120,000 (£10K/month)" }
                 ].map((row, i) => (
