@@ -55,7 +55,12 @@ export default function CommercialEstimatesPage() {
         });
       };
 
-      const logoDataUrl = await loadPngDataUrl("/ethenta_black_text_teal_dots.png");
+      let logoDataUrl: string;
+      try {
+        logoDataUrl = await loadPngDataUrl("ethenta_black_text_teal_dots.png");
+      } catch {
+        logoDataUrl = await loadPngDataUrl("/ethenta_black_text_teal_dots.png");
+      }
 
       const setFont = (size: number, style: "normal" | "bold" = "normal") => {
         pdf.setFont(fontFamily, style);
