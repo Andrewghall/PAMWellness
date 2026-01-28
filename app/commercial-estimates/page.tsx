@@ -36,13 +36,15 @@ export default function CommercialEstimatesPage() {
       const pageWidth = 210;
       const pageHeight = 297;
       const contentWidth = pageWidth - margin * 2;
-      const headerHeight = 22;
-      const footerHeight = 10;
+      const headerHeight = 24;
+      const footerHeight = 14;
       const yStart = margin + headerHeight;
       const yEnd = pageHeight - margin - footerHeight;
       const lineHeight = 6.2;
 
       const fontFamily = "helvetica";
+
+      const teal: [number, number, number] = [0, 168, 162];
 
       const logoDataUrl = `data:image/png;base64,${ETHENTA_LOGO_PNG_BASE64}`;
 
@@ -60,25 +62,39 @@ export default function CommercialEstimatesPage() {
       const headerDate = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
 
       const renderHeader = () => {
+        // Header content should stay inside the header band
+        const headerLineY = margin + headerHeight;
+
         if (logoDataUrl) {
           try {
-            pdf.addImage(logoDataUrl, "PNG", margin, margin, 34, 12);
+            pdf.addImage(logoDataUrl, "PNG", margin, margin + 1, 32, 11);
           } catch (e) {
             console.error("Logo render failed:", e);
           }
         }
 
-        const headerTextY = margin + 18;
+        const headerTextY = margin + 16;
 
-        setFont(10, "bold");
-        pdf.text(headerTitle, margin, headerTextY);
+        setFont(9, "normal");
+        pdf.text(headerTitle, margin + 36, headerTextY);
 
-        setFont(10, "normal");
+        setFont(9, "normal");
         const dateWidth = pdf.getTextWidth(headerDate);
         pdf.text(headerDate, pageWidth - margin - dateWidth, headerTextY);
+
+        // Teal divider line under header
+        pdf.setDrawColor(...teal);
+        pdf.setLineWidth(0.4);
+        pdf.line(margin, headerLineY, pageWidth - margin, headerLineY);
       };
 
       const renderFooter = () => {
+        // Teal divider line above footer
+        const footerLineY = pageHeight - margin - footerHeight;
+        pdf.setDrawColor(...teal);
+        pdf.setLineWidth(0.4);
+        pdf.line(margin, footerLineY, pageWidth - margin, footerLineY);
+
         setFont(9, "normal");
         const footerY = pageHeight - margin;
         const copyright = "© Ethenta 2026";
