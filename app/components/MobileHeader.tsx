@@ -32,7 +32,6 @@ export default function MobileHeader() {
     { href: "/reimagine-output", label: "Reimagine output" },
     { href: "/constraints", label: "Constraints" },
     { href: "/solution-overview", label: "Solution overview" },
-    { href: "/executive", label: "Executive dashboard" },
     { href: "/commercial-estimates", label: "Commercial estimates" },
     { href: "/summary", label: "Summary" },
     { href: "/journey", label: "Journey mapping" },
