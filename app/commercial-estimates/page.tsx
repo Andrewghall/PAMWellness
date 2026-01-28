@@ -1,5 +1,4 @@
-"use client";
-
+zq~
 import { useState } from "react";
 
 const ACCESS_CODE = "PAM2026";
@@ -209,22 +208,29 @@ export default function CommercialEstimatesPage() {
           {/* Phase 4 */}
           <div className="mb-8 pb-8 border-b border-black/10">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
-              <h3 className="text-display text-xl">4. Horizon 2 – Finalise solution</h3>
+              <h3 className="text-display text-xl">4. Horizon 2 – Scaling the Platform</h3>
               <span className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white">
                 £50,000
               </span>
             </div>
             
             <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-              Enhances the live platform with:
+              Horizon 2 scales the platform across the organisation:
+            </p>
+            
+            <p className="text-sm text-[color:var(--ink-muted)] mb-4 font-medium">
+              All required journeys & workflows, full rollout, optimisation and stabilisation
             </p>
             
             <ul className="space-y-1 text-sm text-[color:var(--ink-muted)] pl-4 mb-4">
-              <li>• Extended automation across journeys</li>
-              <li>• Deeper insight and reporting</li>
-              <li>• Additional system integrations</li>
-              <li>• Experience optimisation</li>
-              <li>• Quality framework implementation</li>
+              <li>• Complete rollout of all required patient and clinician journeys</li>
+              <li>• Full workflow automation and optimisation</li>
+              <li>• Platform stabilisation and performance tuning</li>
+              <li>• Extended automation across all care pathways</li>
+              <li>• Deeper insight and advanced reporting capabilities</li>
+              <li>• Additional system integrations for complete coverage</li>
+              <li>• User experience optimisation based on feedback</li>
+              <li>• Quality framework implementation and governance</li>
             </ul>
           </div>
 
