@@ -295,8 +295,8 @@ export default function CommercialEstimatesPage() {
                       <td className="py-2 text-right text-emerald-600">12 weeks</td>
                     </tr>
                     <tr className="border-b border-emerald-100">
-                      <td className="py-2 text-emerald-800">5. Operate and run cost</td>
-                      <td className="py-2 text-right font-semibold text-emerald-800">£50,000</td>
+                      <td className="py-2 text-emerald-800">5. Operate and run cost (£10K per month)</td>
+                      <td className="py-2 text-right font-semibold text-emerald-800">~£50,000</td>
                       <td className="py-2 text-right text-emerald-600">Balance of 52 weeks</td>
                     </tr>
                   </tbody>
