@@ -225,7 +225,6 @@ export default function CommercialEstimatesPage() {
               <li>• Additional system integrations</li>
               <li>• Experience optimisation</li>
               <li>• Quality framework implementation</li>
-              <li>• Quality framework</li>
             </ul>
           </div>
 
@@ -288,12 +287,12 @@ export default function CommercialEstimatesPage() {
                     <tr className="border-b border-emerald-100">
                       <td className="py-2 text-emerald-800">3. MVP Build – Horizon 1</td>
                       <td className="py-2 text-right font-semibold text-emerald-800">£250,000</td>
-                      <td className="py-2 text-right text-emerald-600">30 weeks</td>
+                      <td className="py-2 text-right text-emerald-600">12-15 weeks</td>
                     </tr>
                     <tr className="border-b border-emerald-100">
                       <td className="py-2 text-emerald-800">4. Horizon 2 – Finalise solution</td>
                       <td className="py-2 text-right font-semibold text-emerald-800">£50,000</td>
-                      <td className="py-2 text-right text-emerald-600">18 weeks</td>
+                      <td className="py-2 text-right text-emerald-600">12 weeks</td>
                     </tr>
                     <tr className="border-b border-emerald-100">
                       <td className="py-2 text-emerald-800">5. Operate and run cost</td>
