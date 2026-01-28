@@ -285,7 +285,7 @@ export default function CommercialEstimatesPage() {
                       <td className="py-2 text-right text-emerald-600">2 weeks</td>
                     </tr>
                     <tr className="border-b border-emerald-100">
-                      <td className="py-2 text-emerald-800">3. MVP Build – Horizon 1</td>
+                      <td className="py-2 text-emerald-800">3. Horizon 1 - MVP Build</td>
                       <td className="py-2 text-right font-semibold text-emerald-800">£250,000</td>
                       <td className="py-2 text-right text-emerald-600">12-15 weeks</td>
                     </tr>
