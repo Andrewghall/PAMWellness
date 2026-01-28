@@ -1,4 +1,5 @@
-zq~
+"use client";
+
 import { useState } from "react";
 
 const ACCESS_CODE = "PAM2026";
