@@ -100,36 +100,6 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
-        {/* Year 1 Investment Summary */}
-        <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Year 1 Investment Summary</h2>
-          
-          <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 p-6 mb-6">
-            <div className="text-center mb-4">
-              <p className="text-sm font-semibold text-emerald-700 mb-2">Total first-year investment:</p>
-              <p className="text-3xl font-bold text-emerald-800">£400,000</p>
-            </div>
-            
-            <div className="space-y-3">
-              <p className="text-sm font-semibold text-emerald-700">Includes:</p>
-              <ul className="space-y-1 text-sm text-emerald-700 pl-4">
-                <li>• Discovery and design</li>
-                <li>• Proof of Value</li>
-                <li>• MVP platform delivery</li>
-                <li>• Horizon 2 expansion</li>
-                <li>• Initial operate and support</li>
-              </ul>
-              
-              <div className="border-t border-emerald-300 pt-3 mt-3">
-                <p className="text-sm font-semibold text-emerald-700">
-                  Ongoing operate cost from go-live:<br/>
-                  <span className="text-lg text-emerald-800">£10,000 per month</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Delivery Phases */}
         <section className="card p-6">
           <h2 className="text-display text-2xl mb-6">Delivery Phases</h2>
@@ -198,12 +168,6 @@ export default function CommercialEstimatesPage() {
                   <li>• End-to-end journey execution</li>
                   <li>• Buddy workflows operating across systems</li>
                 </ul>
-              </div>
-              
-              <div className="rounded-xl bg-purple-50 p-3 border border-purple-200">
-                <p className="text-xs text-purple-700 font-medium">
-                  All POV work is fully credited against the MVP build.
-                </p>
               </div>
             </div>
           </div>
@@ -291,6 +255,59 @@ export default function CommercialEstimatesPage() {
               <li>• Minor enhancements</li>
               <li>• Stability and release management</li>
             </ul>
+          </div>
+        </section>
+
+        {/* Year 1 Investment Summary */}
+        <section className="card p-6">
+          <h2 className="text-display text-2xl mb-4">Year 1 Investment Summary</h2>
+          
+          <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 p-6">
+            <div className="text-center mb-6">
+              <p className="text-sm font-semibold text-emerald-700 mb-2">Total first-year investment:</p>
+              <p className="text-3xl font-bold text-emerald-800">£400,000</p>
+            </div>
+            
+            <div className="space-y-4">
+              <p className="text-sm font-semibold text-emerald-700">Investment breakdown by phase:</p>
+              
+              <div className="space-y-2">
+                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                  <span className="text-sm text-emerald-800">1. Discovery & Design Sprint</span>
+                  <span className="font-semibold text-emerald-800">£20,000</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                  <span className="text-sm text-emerald-800">2. Proof of Value (POV)</span>
+                  <span className="font-semibold text-emerald-800">£30,000</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                  <span className="text-sm text-emerald-800">3. MVP Build – Horizon 1</span>
+                  <span className="font-semibold text-emerald-800">£250,000</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                  <span className="text-sm text-emerald-800">4. Horizon 2 – Expansion</span>
+                  <span className="font-semibold text-emerald-800">£50,000</span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-emerald-200">
+                  <span className="text-sm text-emerald-800">5. Initial operate and support (6 months)</span>
+                  <span className="font-semibold text-emerald-800">£50,000</span>
+                </div>
+              </div>
+              
+              <div className="border-t border-emerald-300 pt-4 mt-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold text-emerald-800">Total Year 1 Investment:</span>
+                  <span className="text-lg font-bold text-emerald-800">£400,000</span>
+                </div>
+              </div>
+              
+              <div className="border-t border-emerald-300 pt-3 mt-3">
+                <p className="text-sm font-semibold text-emerald-700">
+                  Ongoing operate cost from go-live:<br/>
+                  <span className="text-lg text-emerald-800">£10,000 per month</span>
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
