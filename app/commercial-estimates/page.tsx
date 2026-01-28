@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const ACCESS_CODE = "PAM2026";
 
@@ -16,6 +18,43 @@ export default function CommercialEstimatesPage() {
       setError("");
     } else {
       setError("Invalid access code");
+    }
+  };
+
+  const handleDownloadQuote = async () => {
+    const element = document.getElementById("commercial-content");
+    if (!element) return;
+
+    try {
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      });
+      
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      
+      let position = 0;
+      
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+      
+      pdf.save("PAM-Wellness-Commercial-Proposal.pdf");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
     }
   };
 
@@ -58,13 +97,24 @@ export default function CommercialEstimatesPage() {
 
   return (
     <div className="min-h-screen px-6 py-10">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-8">
+      <div className="mx-auto flex w-full max-w-4xl flex-col gap-8" id="commercial-content">
         {/* Hero */}
         <header className="glass rounded-[32px] p-8">
-          <p className="pill badge-accent">Application Delivery Proposal</p>
-          <h1 className="text-display mt-4 text-4xl md:text-5xl">
-            Building Your New EAP Platform
-          </h1>
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="pill badge-accent">Application Delivery Proposal</p>
+              <h1 className="text-display mt-4 text-4xl md:text-5xl">
+                Building Your New EAP Platform
+              </h1>
+            </div>
+            <button
+              onClick={handleDownloadQuote}
+              className="rounded-xl bg-[color:var(--accent)] px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[color:var(--accent)]/90 flex items-center gap-2"
+            >
+              <span>📄</span>
+              Download Quote
+            </button>
+          </div>
         </header>
 
         {/* What this delivers */}
