@@ -54,87 +54,126 @@ export default function CommercialEstimatesPage() {
         pdf.text(text, x, y);
       };
       
+      // Helper function to add logo to page
+      const addLogo = async () => {
+        try {
+          // Create image element
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          
+          // Load the logo
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = '/ethenta_black_text_teal_dots.png';
+          });
+          
+          // Add logo to PDF - larger and better positioned
+          pdf.addImage(img, 'PNG', 15, 15, 50, 18);
+        } catch (error) {
+          // Fallback to text if image fails
+          addText('Ethenta •••', 15, 25, 18, 'bold');
+        }
+      };
+      
       // PAGE 1 - Header and Introduction
-      // Add Ethenta text logo with colored dots
-      addText('Ethenta', 15, 25, 16, 'bold');
-      addText('•••', 52, 25, 16, 'bold');
-      addText('Application Delivery Proposal', 15, 50, 20, 'bold');
-      addText('Building Your New EAP Platform', 15, 60, 16, 'bold');
+      await addLogo();
       
-      // Date and quote details
+      // Add a nice header line
+      pdf.setDrawColor(0, 128, 128);
+      pdf.setLineWidth(0.5);
+      pdf.line(15, 40, 195, 40);
+      
+      addCenteredText('Application Delivery Proposal', 22, 24, 'bold');
+      addCenteredText('Building Your New EAP Platform', 32, 16, 'normal');
+      
+      // Date and quote details in a nice box
+      pdf.setDrawColor(200, 200, 200);
+      pdf.setFillColor(245, 245, 245);
+      pdf.roundedRect(15, 50, 180, 20, 2, 2, 'FD');
       const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-      addText(`Date: ${today}`, 15, 80, 11);
-      addText('Quote Reference: PAM-EAP-2026-001', 15, 88, 11);
+      addText(`Date: ${today}`, 25, 58, 10, 'normal');
+      addText('Quote Reference: PAM-EAP-2026-001', 25, 65, 10, 'normal');
       
-      // What this delivers
-      addText('What this delivers', 15, 105, 14, 'bold');
-      addText('A modern, scalable EAP platform that becomes the single operational front door for', 15, 115, 10);
-      addText('patients, clinicians, corporate users and leadership — replacing fragmented systems', 15, 122, 10);
-      addText('with one joined-up experience.', 15, 129, 10);
+      // What this delivers - better spacing
+      addText('What this delivers', 15, 85, 18, 'bold');
+      pdf.setDrawColor(200, 200, 200);
+      pdf.line(15, 90, 195, 90);
       
-      // Benefits box
-      pdf.setDrawColor(0, 128, 0);
+      addText('A modern, scalable EAP platform that becomes the single operational front door for', 15, 100, 11, 'normal');
+      addText('patients, clinicians, corporate users and leadership — replacing fragmented systems', 15, 107, 11, 'normal');
+      addText('with one joined-up experience.', 15, 114, 11, 'normal');
+      
+      // Benefits box - nicer design
+      pdf.setDrawColor(0, 150, 0);
       pdf.setFillColor(240, 255, 240);
-      pdf.roundedRect(15, 140, 180, 45, 3, 3, 'FD');
-      addText('This approach provides:', 20, 150, 11, 'bold');
-      addText('• Faster access to care', 25, 160, 10);
-      addText('• Reduced operational friction', 25, 167, 10);
-      addText('• Improved clinical oversight', 25, 174, 10);
-      addText('• Clear performance visibility', 25, 181, 10);
+      pdf.roundedRect(15, 125, 180, 50, 5, 5, 'FD');
+      addText('This approach provides:', 25, 140, 14, 'bold');
+      addText('✓ Faster access to care', 30, 150, 11, 'normal');
+      addText('✓ Reduced operational friction', 30, 158, 11, 'normal');
+      addText('✓ Improved clinical oversight', 30, 166, 11, 'normal');
+      addText('✓ Clear performance visibility', 30, 174, 11, 'normal');
+      addText('✓ A scalable foundation for automation and AI', 30, 182, 11, 'normal');
       
       // Add footer to page 1
       addFooter(1);
       
       // PAGE 2 - Delivery Phases
       pdf.addPage();
+      await addLogo();
       
-      // Add Ethenta text logo with colored dots
-      addText('Ethenta', 15, 25, 16, 'bold');
-      addText('•••', 52, 25, 16, 'bold');
+      // Add header line
+      pdf.setDrawColor(0, 128, 128);
+      pdf.setLineWidth(0.5);
+      pdf.line(15, 40, 195, 40);
       
-      addText('Delivery Phases', 15, 50, 16, 'bold');
-      addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 60, 10);
-      addText('investment, and low delivery risk.', 15, 67, 10);
+      addText('Delivery Phases', 15, 50, 18, 'bold');
+      pdf.setDrawColor(200, 200, 200);
+      pdf.line(15, 55, 195, 55);
       
-      // Phase 1
-      addText('1. Discovery & Design Sprint', 15, 85, 12, 'bold');
-      addText('£20,000 | 10 days', 150, 85, 10, 'bold');
-      addText('Purpose:', 15, 95, 10, 'bold');
-      addText('• Remove ambiguity early', 20, 103, 9);
-      addText('• Confirm operating model and journeys', 20, 110, 9);
-      addText('• Lock MVP scope and roadmap', 20, 117, 9);
-      addText('Key outcomes:', 15, 127, 10, 'bold');
-      addText('• Agreed future-state journeys', 20, 135, 9);
-      addText('• Defined roles, access and governance', 20, 142, 9);
-      addText('• Confirmed KPIs and success measures', 20, 149, 9);
-      addText('• Finalised MVP and Horizon roadmap', 20, 156, 9);
+      addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 65, 11, 'normal');
+      addText('investment, and low delivery risk.', 15, 72, 11, 'normal');
       
-      // Phase 2
-      addText('2. Proof of Value (POV)', 15, 170, 12, 'bold');
-      addText('£30,000 | Required', 150, 170, 10, 'bold');
-      addText('Purpose:', 15, 180, 10, 'bold');
-      addText('• Prove integrations and workflows in the live estate', 20, 188, 9);
-      addText('• De-risk the MVP before full build investment', 20, 195, 9);
-      addText('What is validated:', 15, 205, 10, 'bold');
-      addText('• RingCentral integration', 20, 213, 9);
-      addText('• Existing portal coexistence or migration', 20, 220, 9);
-      addText('• Secure data exchange', 20, 227, 9);
-      addText('• End-to-end journey execution', 20, 234, 9);
-      addText('• Buddy workflows operating across systems', 20, 241, 9);
+      // Phase boxes with better design
+      pdf.setDrawColor(100, 100, 200);
+      pdf.setFillColor(245, 245, 255);
+      pdf.roundedRect(15, 80, 180, 75, 3, 3, 'FD');
+      addText('1. Discovery & Design Sprint', 25, 90, 14, 'bold');
+      addText('£20,000 | 10 days', 160, 90, 11, 'bold');
+      pdf.setDrawColor(150, 150, 200);
+      pdf.line(25, 95, 175, 95);
+      addText('Purpose:', 25, 103, 11, 'bold');
+      addText('• Remove ambiguity early', 30, 111, 10, 'normal');
+      addText('• Confirm operating model and journeys', 30, 118, 10, 'normal');
+      addText('• Lock MVP scope and roadmap', 30, 125, 10, 'normal');
+      addText('Key outcomes:', 25, 133, 11, 'bold');
+      addText('• Agreed future-state journeys', 30, 141, 10, 'normal');
+      addText('• Confirmed KPIs and success measures', 30, 155, 10, 'normal');
+      addText('• Finalised MVP and Horizon roadmap', 30, 162, 10, 'normal');
       
-      // Phase 3
-      addText('3. Horizon 1 - MVP Build', 15, 256, 12, 'bold');
-      addText('£250,000', 150, 256, 10, 'bold');
+      // Phase 2 box
+      pdf.setDrawColor(200, 100, 100);
+      pdf.setFillColor(255, 245, 245);
+      pdf.roundedRect(15, 170, 180, 85, 3, 3, 'FD');
+      addText('2. Proof of Value (POV)', 25, 180, 14, 'bold');
+      addText('£30,000 | Required', 160, 180, 11, 'bold');
+      pdf.setDrawColor(200, 150, 150);
+      pdf.line(25, 185, 175, 185);
+      addText('Purpose:', 25, 193, 11, 'bold');
+      addText('• Prove integrations and workflows in the live estate', 30, 201, 10, 'normal');
+      addText('• De-risk the MVP before full build investment', 30, 208, 10, 'normal');
+      addText('What is validated:', 25, 216, 11, 'bold');
+      addText('• RingCentral integration', 30, 224, 10, 'normal');
+      addText('• Existing portal coexistence or migration', 30, 231, 10, 'normal');
+      addText('• Secure data exchange', 30, 238, 10, 'normal');
+      addText('• End-to-end journey execution', 30, 245, 10, 'normal');
       
       // Add footer to page 2
       addFooter(2);
       
       // PAGE 3 - More phases and summary
       pdf.addPage();
-      
-      // Add Ethenta text logo with colored dots
-      addText('Ethenta', 15, 25, 16, 'bold');
-      addText('•••', 52, 25, 16, 'bold');
+      await addLogo();
       
       addText('Horizon 1 - MVP Build (continued)', 15, 50, 12, 'bold');
       addText('Delivers a fully operational EAP platform including:', 15, 60, 10);
@@ -181,10 +220,7 @@ export default function CommercialEstimatesPage() {
       
       // PAGE 4 - Investment Summary
       pdf.addPage();
-      
-      // Add Ethenta text logo with colored dots
-      addText('Ethenta', 15, 25, 16, 'bold');
-      addText('•••', 52, 25, 16, 'bold');
+      await addLogo();
       
       addText('Year 1 Investment Summary', 15, 50, 16, 'bold');
       
