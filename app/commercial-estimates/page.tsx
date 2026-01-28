@@ -209,7 +209,7 @@ export default function CommercialEstimatesPage() {
           {/* Phase 4 */}
           <div className="mb-8 pb-8 border-b border-black/10">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
-              <h3 className="text-display text-xl">4. Horizon 2 – Expansion</h3>
+              <h3 className="text-display text-xl">4. Horizon 2 – Finalise solution</h3>
               <span className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white">
                 £50,000
               </span>
@@ -279,7 +279,7 @@ export default function CommercialEstimatesPage() {
                   <span className="font-semibold text-emerald-800">£250,000</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
-                  <span className="text-sm text-emerald-800">4. Horizon 2 – Expansion</span>
+                  <span className="text-sm text-emerald-800">4. Horizon 2 – Finalise solution</span>
                   <span className="font-semibold text-emerald-800">£50,000</span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b border-emerald-200">
