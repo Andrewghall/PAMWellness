@@ -59,7 +59,7 @@ export default function CommercialEstimatesPage() {
       const renderHeader = () => {
         if (logoDataUrl) {
           try {
-            pdf.addImage(logoDataUrl, "PNG", margin, margin, 40, 14);
+            pdf.addImage(logoDataUrl, "PNG", margin, margin, 34, 12);
             return;
           } catch (e) {
             console.error("Logo render failed:", e);
@@ -105,7 +105,7 @@ export default function CommercialEstimatesPage() {
       };
 
       const addSectionTitle = (title: string) => {
-        setFont(15, "bold");
+        setFont(14, "bold");
         ensureSpace(10);
         pdf.text(title, margin, y);
         y += 8;
@@ -131,16 +131,16 @@ export default function CommercialEstimatesPage() {
       renderHeader();
 
       // PAGE 1 - Cover and Executive Summary
-      setFont(24, "bold");
+      setFont(22, "bold");
       const title = "Application Delivery Proposal";
       const titleWidth = pdf.getTextWidth(title);
       pdf.text(title, (pageWidth - titleWidth) / 2, y);
-      y += 10;
-      setFont(16, "normal");
+      y += 9;
+      setFont(15, "normal");
       const subtitle = "Building Your New EAP Platform";
       const subtitleWidth = pdf.getTextWidth(subtitle);
       pdf.text(subtitle, (pageWidth - subtitleWidth) / 2, y);
-      y += 14;
+      y += 12;
 
       setFont(11, "normal");
       const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
