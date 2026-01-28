@@ -323,10 +323,10 @@ export default function CommercialEstimatesPage() {
 
         {/* What the Client Gets */}
         <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">What the Client Gets</h2>
+          <h2 className="text-display text-2xl mb-4">What PAM Wellness Gets</h2>
           
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            By the end of Horizon 1, the organisation will have:
+            By the end of Horizon 1, PAM Wellness will have:
           </p>
           
           <ul className="space-y-2 text-sm text-[color:var(--ink-muted)] pl-4">
