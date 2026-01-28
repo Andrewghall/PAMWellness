@@ -175,7 +175,7 @@ export default function CommercialEstimatesPage() {
           {/* Phase 3 */}
           <div className="mb-8 pb-8 border-b border-black/10">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
-              <h3 className="text-display text-xl">3. MVP Build – Horizon 1</h3>
+              <h3 className="text-display text-xl">3. Horizon 1 - MVP Build</h3>
               <span className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white">
                 £250,000
               </span>
