@@ -30,26 +30,36 @@ export default function CommercialEstimatesPage() {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
+        height: element.scrollHeight,
+        windowHeight: element.scrollHeight
       });
       
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
       
-      const imgWidth = 210;
-      const pageHeight = 295;
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
       
+      // Calculate how many pages we need and adjust to fit exactly 3 pages
+      const totalPages = 3;
+      const adjustedHeight = (pageHeight * totalPages) - 20; // Leave some margin
+      const scaleFactor = adjustedHeight / imgHeight;
+      const finalImgHeight = imgHeight * scaleFactor;
+      const finalImgWidth = imgWidth * scaleFactor;
+      
+      let heightLeft = finalImgHeight;
       let position = 0;
       
-      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      // Add first page
+      pdf.addImage(imgData, "PNG", 0, position, finalImgWidth, finalImgHeight);
       heightLeft -= pageHeight;
       
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
+      // Add remaining pages
+      for (let i = 1; i < totalPages; i++) {
+        position = -(pageHeight * i);
         pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+        pdf.addImage(imgData, "PNG", 0, position, finalImgWidth, finalImgHeight);
       }
       
       pdf.save("PAM-Wellness-Commercial-Proposal.pdf");
@@ -109,7 +119,7 @@ export default function CommercialEstimatesPage() {
             </div>
             <button
               onClick={handleDownloadQuote}
-              className="rounded-xl bg-[color:var(--accent)] px-6 py-3 text-sm font-medium text-white transition-all hover:bg-[color:var(--accent)]/90 flex items-center gap-2"
+              className="rounded-lg bg-[color:var(--accent)] px-4 py-2 text-xs font-medium text-white transition-all hover:bg-[color:var(--accent)]/90 flex items-center gap-1"
             >
               <span>📄</span>
               Download Quote
