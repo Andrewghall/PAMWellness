@@ -22,45 +22,216 @@ export default function CommercialEstimatesPage() {
   };
 
   const handleDownloadQuote = async () => {
-    const element = document.getElementById("commercial-content");
-    if (!element) return;
-
+    const pdf = new jsPDF("p", "mm", "a4");
+    
     try {
-      const canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        height: element.scrollHeight,
-        windowHeight: element.scrollHeight
+      // Add Ethenta logo
+      const logoImg = new Image();
+      logoImg.src = '/ethenta_black_text_teal_dots.png';
+      
+      // Wait for logo to load
+      await new Promise((resolve) => {
+        logoImg.onload = resolve;
+        logoImg.onerror = resolve; // Continue even if logo fails to load
       });
       
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
+      // Helper function to add text
+      const addText = (text: string, x: number, y: number, fontSize = 12, fontStyle = 'normal') => {
+        pdf.setFontSize(fontSize);
+        pdf.setFont('helvetica', fontStyle as any);
+        pdf.text(text, x, y);
+      };
       
-      const imgWidth = 210; // A4 width in mm
-      const pageHeight = 297; // A4 height in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // Helper function to add centered text
+      const addCenteredText = (text: string, y: number, fontSize = 12, fontStyle = 'normal') => {
+        pdf.setFontSize(fontSize);
+        pdf.setFont('helvetica', fontStyle as any);
+        const textWidth = pdf.getTextWidth(text);
+        const x = (210 - textWidth) / 2;
+        pdf.text(text, x, y);
+      };
       
-      // Calculate how many pages we need and adjust to fit exactly 3 pages
-      const totalPages = 3;
-      const adjustedHeight = (pageHeight * totalPages) - 20; // Leave some margin
-      const scaleFactor = adjustedHeight / imgHeight;
-      const finalImgHeight = imgHeight * scaleFactor;
-      const finalImgWidth = imgWidth * scaleFactor;
-      
-      let heightLeft = finalImgHeight;
-      let position = 0;
-      
-      // Add first page
-      pdf.addImage(imgData, "PNG", 0, position, finalImgWidth, finalImgHeight);
-      heightLeft -= pageHeight;
-      
-      // Add remaining pages
-      for (let i = 1; i < totalPages; i++) {
-        position = -(pageHeight * i);
-        pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, finalImgWidth, finalImgHeight);
+      // PAGE 1 - Header and Introduction
+      if (logoImg.complete) {
+        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
       }
+      
+      addText('Application Delivery Proposal', 15, 50, 20, 'bold');
+      addText('Building Your New EAP Platform', 15, 60, 16, 'bold');
+      
+      // Date and quote details
+      const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      addText(`Date: ${today}`, 15, 80, 11);
+      addText('Quote Reference: PAM-EAP-2026-001', 15, 88, 11);
+      
+      // What this delivers
+      addText('What this delivers', 15, 105, 14, 'bold');
+      addText('A modern, scalable EAP platform that becomes the single operational front door for', 15, 115, 10);
+      addText('patients, clinicians, corporate users and leadership — replacing fragmented systems', 15, 122, 10);
+      addText('with one joined-up experience.', 15, 129, 10);
+      
+      // Benefits box
+      pdf.setDrawColor(0, 128, 0);
+      pdf.setFillColor(240, 255, 240);
+      pdf.roundedRect(15, 140, 180, 45, 3, 3, 'FD');
+      addText('This approach provides:', 20, 150, 11, 'bold');
+      addText('• Faster access to care', 25, 160, 10);
+      addText('• Reduced operational friction', 25, 167, 10);
+      addText('• Improved clinical oversight', 25, 174, 10);
+      addText('• Clear performance visibility', 25, 181, 10);
+      
+      // PAGE 2 - Delivery Phases
+      pdf.addPage();
+      
+      if (logoImg.complete) {
+        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
+      }
+      
+      addText('Delivery Phases', 15, 50, 16, 'bold');
+      addText('Delivery is structured into clear phases to ensure speed to value, controlled', 15, 60, 10);
+      addText('investment, and low delivery risk.', 15, 67, 10);
+      
+      // Phase 1
+      addText('1. Discovery & Design Sprint', 15, 85, 12, 'bold');
+      addText('£20,000 | 10 days', 150, 85, 10, 'bold');
+      addText('Purpose:', 15, 95, 10, 'bold');
+      addText('• Remove ambiguity early', 20, 103, 9);
+      addText('• Confirm operating model and journeys', 20, 110, 9);
+      addText('• Lock MVP scope and roadmap', 20, 117, 9);
+      addText('Key outcomes:', 15, 127, 10, 'bold');
+      addText('• Agreed future-state journeys', 20, 135, 9);
+      addText('• Defined roles, access and governance', 20, 142, 9);
+      addText('• Confirmed KPIs and success measures', 20, 149, 9);
+      addText('• Finalised MVP and Horizon roadmap', 20, 156, 9);
+      
+      // Phase 2
+      addText('2. Proof of Value (POV)', 15, 170, 12, 'bold');
+      addText('£30,000 | Required', 150, 170, 10, 'bold');
+      addText('Purpose:', 15, 180, 10, 'bold');
+      addText('• Prove integrations and workflows in the live estate', 20, 188, 9);
+      addText('• De-risk the MVP before full build investment', 20, 195, 9);
+      addText('What is validated:', 15, 205, 10, 'bold');
+      addText('• RingCentral integration', 20, 213, 9);
+      addText('• Existing portal coexistence or migration', 20, 220, 9);
+      addText('• Secure data exchange', 20, 227, 9);
+      addText('• End-to-end journey execution', 20, 234, 9);
+      addText('• Buddy workflows operating across systems', 20, 241, 9);
+      
+      // Phase 3
+      addText('3. Horizon 1 - MVP Build', 15, 256, 12, 'bold');
+      addText('£250,000', 150, 256, 10, 'bold');
+      
+      // PAGE 3 - More phases and summary
+      pdf.addPage();
+      
+      if (logoImg.complete) {
+        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
+      }
+      
+      addText('Horizon 1 - MVP Build (continued)', 15, 50, 12, 'bold');
+      addText('Delivers a fully operational EAP platform including:', 15, 60, 10);
+      addText('• Single digital care portal', 20, 68, 9);
+      addText('• Live patient journeys', 20, 75, 9);
+      addText('• Live clinician journeys', 20, 82, 9);
+      addText('• Patient Buddy for proactive and reactive engagement', 20, 89, 9);
+      addText('• Clinician Buddy for workload management and escalation', 20, 96, 9);
+      addText('• RingCentral-aligned communications', 20, 103, 9);
+      addText('• Executive KPI dashboards', 20, 110, 9);
+      addText('• Standardised SOPs and governance', 20, 117, 9);
+      
+      // Outcome box
+      pdf.setDrawColor(0, 128, 0);
+      pdf.setFillColor(240, 255, 240);
+      pdf.roundedRect(15, 125, 180, 30, 3, 3, 'FD');
+      addText('Outcome:', 20, 135, 11, 'bold');
+      addText('• One platform', 25, 143, 9);
+      addText('• One operating model', 25, 150, 9);
+      addText('• One source of truth', 25, 157, 9);
+      
+      // Phase 4
+      addText('4. Horizon 2 – Scaling the Platform', 15, 170, 12, 'bold');
+      addText('£50,000', 150, 170, 10, 'bold');
+      addText('Horizon 2 scales the platform across the organisation:', 15, 180, 10);
+      addText('All required journeys & workflows, full rollout, optimisation and stabilisation', 15, 187, 10, 'bold');
+      addText('• Complete rollout of all required patient and clinician journeys', 20, 195, 9);
+      addText('• Full workflow automation and optimisation', 20, 202, 9);
+      addText('• Platform stabilisation and performance tuning', 20, 209, 9);
+      addText('• Extended automation across all care pathways', 20, 216, 9);
+      addText('• Deeper insight and advanced reporting capabilities', 20, 223, 9);
+      addText('• Additional system integrations for complete coverage', 20, 230, 9);
+      addText('• User experience optimisation based on feedback', 20, 237, 9);
+      addText('• Quality framework implementation and governance', 20, 244, 9);
+      
+      // Phase 5
+      addText('5. Operate, Refine & Upgrade', 15, 256, 12, 'bold');
+      addText('£10,000 per month | from go-live', 150, 256, 10, 'bold');
+      addText('• Platform operation and support', 20, 264, 9);
+      addText('• Monitoring and service assurance', 20, 271, 9);
+      
+      // PAGE 4 - Investment Summary
+      pdf.addPage();
+      
+      if (logoImg.complete) {
+        pdf.addImage(logoImg, 'PNG', 15, 15, 40, 15);
+      }
+      
+      addText('Year 1 Investment Summary', 15, 50, 16, 'bold');
+      
+      // Investment summary box
+      pdf.setDrawColor(0, 128, 0);
+      pdf.setFillColor(240, 255, 240);
+      pdf.roundedRect(15, 60, 180, 35, 3, 3, 'FD');
+      addCenteredText('Total first-year investment:', 75, 11, 'bold');
+      addCenteredText('£400,000', 85, 18, 'bold');
+      
+      // Investment breakdown
+      addText('Investment breakdown by phase:', 15, 105, 11, 'bold');
+      
+      // Table headers
+      addText('Phase', 15, 120, 10, 'bold');
+      addText('Investment', 120, 120, 10, 'bold');
+      addText('Time Frames', 160, 120, 10, 'bold');
+      
+      // Table rows
+      addText('1. Discovery & Design Sprint', 15, 130, 9);
+      addText('£20,000', 120, 130, 9);
+      addText('2 weeks', 160, 130, 9);
+      
+      addText('2. Proof of Value (POV)', 15, 138, 9);
+      addText('£30,000', 120, 138, 9);
+      addText('2 weeks', 160, 138, 9);
+      
+      addText('3. Horizon 1 - MVP Build', 15, 146, 9);
+      addText('£250,000', 120, 146, 9);
+      addText('12-15 weeks', 160, 146, 9);
+      
+      addText('4. Horizon 2 – Scaling the Platform', 15, 154, 9);
+      addText('£50,000', 120, 154, 9);
+      addText('12 weeks', 160, 154, 9);
+      
+      addText('5. Operate and run cost (£10K per month)', 15, 162, 9);
+      addText('~£50,000', 120, 162, 9);
+      addText('Balance of 52 weeks', 160, 162, 9);
+      
+      // Totals
+      pdf.line(15, 170, 195, 170);
+      addText('Total Year 1 Investment:', 15, 180, 11, 'bold');
+      addText('£400,000', 120, 180, 11, 'bold');
+      
+      pdf.line(15, 190, 195, 190);
+      addText('Post year 1 - Ongoing operate cost:', 15, 200, 11, 'bold');
+      addText('£10K (per month)', 120, 200, 11, 'bold');
+      addText('Assumes a 3 year agreement.', 15, 208, 9);
+      
+      // What PAM Wellness Gets
+      addText('What PAM Wellness Gets', 15, 225, 14, 'bold');
+      addText('By the end of Horizon 1, PAM Wellness will have:', 15, 235, 10);
+      addText('• A single operational digital care platform', 20, 243, 9);
+      addText('• Fully supported patient and clinician journeys', 20, 250, 9);
+      addText('• Reduced administrative burden', 20, 257, 9);
+      addText('• Improved experience and responsiveness', 20, 264, 9);
+      addText('• Real-time operational and quality visibility', 20, 271, 9);
+      addText('• A scalable foundation for Horizons 2 and 3', 20, 278, 9);
       
       pdf.save("PAM-Wellness-Commercial-Proposal.pdf");
     } catch (error) {
