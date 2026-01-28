@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import jsPDF from "jspdf";
+import ethentaLogo from "../../public/ethenta_black_text_teal_dots.png";
 
 const ACCESS_CODE = "PAM2026";
-const ETHENTA_LOGO_DATA_URL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABgAAAAKjCAYAAADbKcQ4AABWf0lEQVR4nO39+7etWXkfdn7nfN+19z7n1JX7HSQQulggCZBAgLgISQgkx7ZsdztOOm23R7ft2E4nabv7b7AcDzuJM+Lh2E4n7Qx30pYvsZGELRBISOIiJLAky0hCGCMQBVUUVXUue6+13jn7h3ftffY5VUBRda5vfT6MxTln73V519xr1w/Pd87nKUl6AAAAAACARak3+wIAAAAAAIBrTwAAAAAAAAALJAAAAAAAAIAFEgAAAAAAAMACCQAAAAAAAGCBBAAAAAAAALBAAgAAAAAAAFggAQAAAAAAACyQAAAAAAAAABZIAAAAAAAAAAskAAAAAAAAgAUSAAAAAAAAwAIJAAAAAAAAYIEEAAAAAAAAsEACAAAAAAAAWCABAAAAAAAALJAAAAAAAAAAFkgAAAAAAAAACyQAAAAAAACABRIAAAAAAADAAgkAAAAAAABggQQAAAAAAACwQAIAAAAAAABYIAEAAAAAAAAskAAAAAAAAAAWSAAAAAAAAAALJAAAAAAAAIAFEgAAAAAAAMACCQAAAAAAAGCBBAAAAAAAALBAAgAAAAAAAFggAQAAAAAAACzQeLMvAAAAAABuMeXqL/wXv/xLfbPZpLWW1VDzX7/uTY+6T5J+A65tCR5zfdebTdJ79sqQv/G9b7S+cA2U+MUBAAAAgPKf/ebH+ucuXsyXNps8tDnKpfUm69ZzWFqm3pJWMqSkZEjvPRlqxpqc3R9zz8F+7i4lz9nbz//4itceF6/V3WYlSf7Sb/5a//QjD+ZLm00u1J4vnT+fjKtMU09rLa2X9Np3a9wylpqhJnfu72W/ljxtPJOX3HVP/vY3v8L6wuMkAAAAAADgqaokyR//uZ/pn90c5Qul5IE25WKSvlqllCF1VXPYtum9p/Sa4VRH7akkZShpbZMcXcq5ntxbap6bIU9ryYvP3pW/8/o3PZXrb+WvfOSX+789fz6/n22+eHQpj4wtF4aadS0Z9g9OgpW0np6SUkp6mZerlp5SSlpfJ+tNDnrNXdvkBau9PGM95RVPf0b+q1e/9qm8vvA1+QUBAAAA4Kmm/Ee/9uH+6196IA+n5ssXLmVbxvSDVda1ZDvUDOOYNk1prSW7onTpJbXMm897b+m9p5eWcRxTW082m+yXITk6Sj3a5u69g5ydpjz/7Nm8581veyrtWi9/8td+uX/s938v5/eGPHi0zrbW7J85k3WbT1OU1V4Ot1NSS2odk9ZTe+YAoPdM6em7FRtKTdJS25T9Ycz2kYs5N4w5myFnt5u85OzZvPtNb1PnhMfgFwMAAACAp4ryFz7yS/199302j9x7bz576VLawUH2xv1M0zQXnvs2SU9qTdqubFZL0vtJFa3s/lJ2O9SnaUopJUlNn6bs7x1kGIZsLh5mr/QctG2e1aZ865m78o/f8JYl1+PKn/nwL/UPPfDFfHE15P5hk3awl1KG9Kll6EmfWpKa1JKp96SW+fu9p06Xl6WUkjbMJwLadg5hslvvvdV+ji5dSuqYMyU5t1nnmdMmr77nrvyD1yx6feHr5hcCAAAAgKUrSfL6n/vpfl+b8qWeXBpqesa0WrPZbpJh3m5eak3vUzK11AzptaSnzwXo4yfrSe1J7z3t+HtlfpkyDOmbbdJaxnGVPk3ZG6bUaZP9acjTe893Pe1p+d9e9YYl1eXKX/jEx/ov3XdfPreZcrG0TPt7WSfZpqRPcz//aZoyjmNaSaY27da0Z168kvTL04F773PoUpIMwxzGTFPKOKa3aRcclPTNOqthzEFa9tabPKfUvP75L8j/8M3fuaT1hSfMLwIAAAAAS1b+0C9+oP/rhx/I/aueo4O9bHeDfDPNd5jqrvC/3c67zGuS3lPrXLROHZK+6/3fe5I6l6xLOSms9d7mUwNJclLcTpKWlG1qGdNSsppanr6Z8sJpm4/84B9eQm...";
 
 export default function CommercialEstimatesPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,7 +44,19 @@ export default function CommercialEstimatesPage() {
 
       const fontFamily = "helvetica";
 
-      const logoDataUrl = ETHENTA_LOGO_DATA_URL;
+      const loadPngDataUrl = async (src: string): Promise<string> => {
+        const res = await fetch(src);
+        if (!res.ok) throw new Error(`Failed to fetch logo: ${res.status}`);
+        const blob = await res.blob();
+        return await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result));
+          reader.onerror = () => reject(new Error("Failed to read logo"));
+          reader.readAsDataURL(blob);
+        });
+      };
+
+      const logoDataUrl = await loadPngDataUrl((ethentaLogo as any).src ?? (ethentaLogo as any));
 
       const setFont = (size: number, style: "normal" | "bold" = "normal") => {
         pdf.setFont(fontFamily, style);
