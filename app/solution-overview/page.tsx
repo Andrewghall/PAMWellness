@@ -15,6 +15,7 @@ type Section = {
 
 const sections: Section[] = [
   { id: "why", title: "Why this solution exists", icon: "🎯" },
+  { id: "pov", title: "POV Scope", icon: "📋" },
   { id: "ethos", title: "Design Ethos", icon: "💡" },
   { id: "ethics", title: "Ethics & Guardrails", icon: "🛡️" },
   { id: "model", title: "Care Operating Model", icon: "⚙️" },
@@ -105,6 +106,54 @@ const solutionOutcomes = [
   { label: "Provides real-time visibility and guidance", icon: "👁️" },
   { label: "Removes unnecessary administrative effort", icon: "⚡" },
   { label: "Enables growth without loss of control", icon: "📈" },
+];
+
+const povScope = [
+  {
+    title: "Working platform shell",
+    description: "Functional platform infrastructure ready for demonstration and development",
+    status: "core"
+  },
+  {
+    title: "Secure portal entry point",
+    description: "Authenticated access gateway for all external actors",
+    status: "mvp"
+  },
+  {
+    title: "Role-based access model",
+    description: "Contextual permissions and views based on user roles",
+    status: "mvp"
+  },
+  {
+    title: "Live or sandbox set up",
+    description: "Configurable environment for demonstration or testing",
+    status: "core"
+  },
+  {
+    title: "Integrations",
+    description: "RingCentral or client-led API integration with sample real data",
+    status: "core"
+  },
+  {
+    title: "Event handling and data exchange",
+    description: "Real-time data flow and event processing between components",
+    status: "core"
+  },
+  {
+    title: "Demonstration Patient Buddy workflow",
+    description: "Sample patient interaction flow showcasing PAM Buddy capabilities",
+    status: "demo"
+  },
+  {
+    title: "Demonstration Clinician Buddy workflow",
+    description: "Sample clinician interaction flow showcasing support features",
+    status: "demo"
+  },
+  {
+    title: "Basic dashboards populated from integrated run data",
+    description: "Visual analytics and reporting from live system data",
+    status: "core"
+  },
 ];
 
 export default function SolutionOverviewPage() {
@@ -243,6 +292,74 @@ export default function SolutionOverviewPage() {
                 <div className="mt-6 rounded-xl bg-slate-100 p-4">
                   <p className="text-sm text-slate-700">
                     The solution directly responds to these challenges by replacing fragmented processes with a <strong>single care operating model</strong> that connects people, journeys, quality and governance.
+                  </p>
+                </div>
+              </section>
+            )}
+
+            {/* POV Scope Section */}
+            {activeSection === "pov" && (
+              <section className="card p-6">
+                <h2 className="text-display text-xl">POV Scope</h2>
+                <p className="mt-2 text-sm text-[color:var(--ink-muted)]">
+                  The POV will include the following components and capabilities
+                </p>
+                
+                <div className="mt-6 space-y-3">
+                  {povScope.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`rounded-xl border p-4 ${
+                        item.status === 'mvp' 
+                          ? 'border-amber-200 bg-amber-50' 
+                          : item.status === 'demo'
+                          ? 'border-purple-200 bg-purple-50'
+                          : 'border-emerald-200 bg-emerald-50'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className={`mt-0.5 rounded-full px-2 py-1 text-xs font-medium ${
+                          item.status === 'mvp' 
+                            ? 'bg-amber-600 text-white' 
+                            : item.status === 'demo'
+                            ? 'bg-purple-600 text-white'
+                            : 'bg-emerald-600 text-white'
+                        }`}>
+                          {item.status === 'mvp' ? 'MVP' : item.status === 'demo' ? 'DEMO' : 'CORE'}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-semibold text-black">{item.title}</h3>
+                          <p className="mt-1 text-xs text-[color:var(--ink-muted)]">{item.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 grid gap-4 md:grid-cols-3">
+                  <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+                    <h3 className="text-sm font-semibold text-amber-800">Move to MVP</h3>
+                    <p className="mt-2 text-xs text-amber-700">
+                      Essential components that must be included in the minimum viable product for immediate value delivery.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                    <h3 className="text-sm font-semibold text-emerald-800">Core Components</h3>
+                    <p className="mt-2 text-xs text-emerald-700">
+                      Fundamental platform capabilities required for functional demonstration and operation.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-purple-200 bg-purple-50 p-4">
+                    <h3 className="text-sm font-semibold text-purple-800">Demonstration</h3>
+                    <p className="mt-2 text-xs text-purple-700">
+                      Sample workflows showcasing the PAM Buddy capabilities and user experience.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-xl bg-slate-100 p-4">
+                  <p className="text-sm text-slate-700">
+                    The POV scope provides a comprehensive demonstration platform that balances <strong>immediate MVP value</strong> with <strong>core platform capabilities</strong> and <strong>compelling user workflows</strong> to validate the solution vision.
                   </p>
                 </div>
               </section>

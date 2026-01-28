@@ -94,11 +94,64 @@ export default function CommercialEstimatesPage() {
           </div>
         </section>
 
+        {/* Solution Commercial Approach */}
+        <section className="card p-6">
+          <h2 className="text-display text-2xl mb-4">Solution Commercial Approach</h2>
+          <p className="text-sm text-[color:var(--ink-muted)] mb-6">
+            Our delivery approach is structured into five distinct phases, each delivering specific value and building upon the previous work. This phased approach ensures controlled investment, measurable outcomes, and continuous value delivery.
+          </p>
+          
+          <div className="space-y-4">
+            {[
+              {
+                phase: "1. Discovery and Design Sprint",
+                price: "£12K - £20K (1 to 2 weeks)",
+                delivers: "Comprehensive requirement gathering, solution architecture, and detailed MVP definition with clear delivery roadmap"
+              },
+              {
+                phase: "2. Proof of Value (POV)",
+                price: "£30K",
+                delivers: "Working platform shell with core integrations, sample workflows, and demonstration of key capabilities"
+              },
+              {
+                phase: "3. MVP (Horizon 1)",
+                price: "£200K",
+                delivers: "Production-ready platform with full user workflows, secure access, role-based permissions, and operational dashboards"
+              },
+              {
+                phase: "4. Horizon 2",
+                price: "£50K",
+                delivers: "Advanced automation, extended analytics, additional integrations, and optimized user experience"
+              },
+              {
+                phase: "5. Operate, Refine, Upgrade",
+                price: "£10K per month from go live",
+                delivers: "Ongoing support, continuous improvement, performance management, and strategic enhancements"
+              }
+            ].map((item, i) => (
+              <div key={i} className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <h3 className="text-display text-lg text-emerald-800">{item.phase}</h3>
+                  <span className="rounded-full bg-emerald-600 px-3 py-1 text-sm font-medium text-white">
+                    {item.price}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm text-emerald-700">{item.delivers}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Phase 1 - Discovery Sprint */}
         <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Phase 1 — Discovery & Design Sprint (1 week)</h2>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+            <h2 className="text-display text-2xl">Phase 1 — Discovery & Design Sprint</h2>
+            <span className="rounded-full bg-amber-600 px-4 py-2 text-sm font-medium text-white">
+              £12K - £20K (1 to 2 weeks)
+            </span>
+          </div>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
-            To ensure clarity, alignment, and delivery confidence, we recommend a dedicated one-week discovery and design sprint prior to commencing build.
+            To ensure clarity, alignment, and delivery confidence, we recommend a dedicated discovery and design sprint prior to commencing build.
           </p>
           <div className="rounded-xl bg-amber-50 p-4 border border-amber-200">
             <p className="text-sm text-amber-800">
@@ -207,7 +260,12 @@ export default function CommercialEstimatesPage() {
 
         {/* Phase 2 - POV */}
         <section className="card p-6">
-          <h2 className="text-display text-2xl mb-4">Phase 2 — Platform Proof of Value (POV) (10 days)</h2>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+            <h2 className="text-display text-2xl">Phase 2 — Platform Proof of Value (POV)</h2>
+            <span className="rounded-full bg-purple-600 px-4 py-2 text-sm font-medium text-white">
+              £30K
+            </span>
+          </div>
           <p className="text-sm text-[color:var(--ink-muted)] mb-4">
             Following discovery, we recommend a 10-day Proof of Value (POV) to demonstrate that the proposed platform architecture can operate effectively within the client's existing technology estate.
           </p>
@@ -363,8 +421,12 @@ export default function CommercialEstimatesPage() {
 
           {/* Horizon 2 */}
           <div className="mb-8">
-            <h3 className="text-display text-lg mb-3 text-blue-700">Horizon 2 — Expansion (Additional Build)</h3>
-            <p className="text-sm text-blue-600 mb-3 font-medium">Build cost: £50,000</p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 className="text-display text-lg">Horizon 2 — Expansion (Additional Build)</h3>
+              <span className="rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white">
+                £50K
+              </span>
+            </div>
             <p className="text-sm text-blue-800 mb-4">Horizon 2 is an extension of the live MVP and is not required for initial delivery.</p>
             
             <div className="rounded-xl bg-blue-50 p-4 border border-blue-200">
@@ -484,7 +546,12 @@ export default function CommercialEstimatesPage() {
 
           {/* Phase 3 */}
           <div className="mb-8">
-            <h3 className="text-display text-lg mb-3 text-purple-700">Phase 3 — Horizon 1: MVP Build</h3>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 className="text-display text-lg">Phase 3 — Horizon 1: MVP Build</h3>
+              <span className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-medium text-white">
+                £200K
+              </span>
+            </div>
             <p className="text-sm text-purple-600 mb-3 font-medium">Build value: £138,000 • Net payable after POV credit: £118,000</p>
             
             <div className="rounded-xl bg-purple-50 p-4 border border-purple-200">
@@ -506,8 +573,13 @@ export default function CommercialEstimatesPage() {
 
           {/* Phase 4 */}
           <div className="mb-8">
-            <h3 className="text-display text-lg mb-3 text-amber-700">Phase 4 — Operate & Support (Year 1)</h3>
-            <p className="text-sm text-amber-600 mb-3 font-medium">Investment: £100,000 per annum</p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 className="text-display text-lg">Phase 4 — Operate, Refine, Upgrade</h3>
+              <span className="rounded-full bg-amber-600 px-4 py-2 text-sm font-medium text-white">
+                £10K per month from go live
+              </span>
+            </div>
+            <p className="text-sm text-amber-600 mb-3 font-medium">Investment: £120,000 per annum (£10K × 12 months)</p>
             
             <div className="rounded-xl bg-amber-50 p-4 border border-amber-200">
               <h4 className="text-sm font-semibold text-amber-900 mb-3">Business coverage:</h4>
@@ -523,8 +595,12 @@ export default function CommercialEstimatesPage() {
 
           {/* Horizon 2 */}
           <div className="mb-8">
-            <h3 className="text-display text-lg mb-3 text-indigo-700">Horizon 2 — Expansion</h3>
-            <p className="text-sm text-indigo-600 mb-3 font-medium">Investment: £50,000 (included in Year 1)</p>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 className="text-display text-lg">Horizon 2 — Expansion</h3>
+              <span className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white">
+                £50K
+              </span>
+            </div>
             
             <div className="rounded-xl bg-indigo-50 p-4 border border-indigo-200">
               <h4 className="text-sm font-semibold text-indigo-900 mb-3">Business focus:</h4>
@@ -575,11 +651,11 @@ export default function CommercialEstimatesPage() {
               </thead>
               <tbody>
                 {[
-                  { component: "Discovery workshops", investment: "£12,000" },
-                  { component: "Proof of Value (required)", investment: "£20,000" },
-                  { component: "Horizon 1 — MVP build (post-POV deduction)", investment: "£118,000" },
-                  { component: "Annual operate and support", investment: "£100,000" },
-                  { component: "Horizon 2 expansion (included)", investment: "£50,000" }
+                  { component: "Discovery workshops", investment: "£12,000 - £20,000" },
+                  { component: "Proof of Value (required)", investment: "£30,000" },
+                  { component: "Horizon 1 — MVP build", investment: "£200,000" },
+                  { component: "Horizon 2 expansion", investment: "£50,000" },
+                  { component: "Annual operate and support", investment: "£120,000 (£10K/month)" }
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-black/5">
                     <td className="p-3">{row.component}</td>
